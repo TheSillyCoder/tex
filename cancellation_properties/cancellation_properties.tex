@@ -1,0 +1,103 @@
+\documentclass[10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\title{cancellation properties}
+\author{Debayan Sarkar}
+\date{January 7, 2023}
+
+\geometry{a4paper, margin=1in}
+\setlength{\parindent}{0pt}
+\newcommand{\nn}{\mathbb{N}}
+
+\begin{document}
+        \par\textbf{IISER Kolkata} \hfill \textbf{Notes}
+        \vspace{3pt}
+        \hrule
+        \vspace{3pt}
+        \begin{center}
+                \LARGE{\textbf{Cancellation Properties on Natural Numbers}}
+        \end{center}
+        \vspace{3pt}
+        \hrule
+        \vspace{3pt}
+        Debayan Sarkar, \texttt{22MS002}\hfill January 7, 2023
+        \vspace{20pt}
+        \begin{center}
+            \Large{\textbf{Cancellation property for Addition}}
+        \end{center}
+        \vspace{20pt}
+        \textbf{Proposition 1 : } $1 + b = 1 + a \Rightarrow b = a \,\,\, \forall \, a, b \in \nn$
+
+        \textbf{Proof : } Every $n \in \nn$ has a unique successor in $\nn$. Hence, every successor must also have a unique predecessor. So, if the successors are equal, the predecessors must also be equal.
+
+        \textbf{Claim : }
+        We claim that, 
+        $$n + a = n + b \Rightarrow a = b \,\,\, \forall \, n, a , b \in \nn$$\\
+        \textbf{Proof : }We prove this using the principle of mathematical induction on n.
+
+        \textbf{Base Step : }For $n = 1$, the statement becomes $$1 + a = 1 + b \Rightarrow a = b$$ which is true from Proposition 1. So, this statement holds for $n = 1$
+
+        \textbf{Induction Step : }Let's say that this holds for $n = k$ where $k \in \nn$. We wish to prove, that this holds for $n = k + 1$. 
+
+        Let's assume that $(k+1) + a = (k + 1) + b$
+
+        \begin{align*}
+        (k+1)+a & = k + (1 + a) \tag{Associativity of addition on $\nn$}\\
+         & = k + (a + 1) \tag{Commutativity of addition on $\nn$}\\
+         & = (k + a) + 1 \tag{Associativity of addition on $\nn$}
+        \end{align*}
+        \begin{align*}
+            \therefore (k + 1) + a = (k + a) + 1 \tag{2}
+        \end{align*}
+        Similarly, 
+        \begin{align*} 
+        (k+1)+b & = k + (1 + b) \tag{Associativity of addition on $\nn$}\\
+         & = k + (b + 1) \tag{Commutativity of addition on $\nn$}\\
+         & = (k + b) + 1 \tag{Associativity of addition on $\nn$}
+        \end{align*}
+        \begin{align*}
+            \therefore (k + 1) + b = (k + b) + 1 \tag{1}
+        \end{align*}
+        Substituting the values from $(1)$ and $(2)$ in our assumption we get,
+        \begin{align*}
+            & (k + a) + 1 = (k + b) + 1\\
+            &\Rightarrow k + a = k + b \tag{From Proposition 1 as $(k + a), (k + b) \in \nn$}\\
+            &\Rightarrow a = b \tag{Because the statement holds for $n = k$}\\
+        \end{align*}
+
+        Hence, $$(k + 1) + a = (k + 1) + b \Rightarrow a = b$$
+
+        The statement holds true for $n = k + 1$ whenever it holds true for $n = k$. By invoking the principle of mathematical induction we can say, that it holds true for every $n \in \nn$. This proves our claim
+        \clearpage
+        \begin{center}
+            \Large{\textbf{Cancellation property for Multiplication}}
+        \end{center}
+        \vspace{20pt}
+        \textbf{Claim : }We claim that $$n \cdot a = n \cdot b \Rightarrow a = b \,\,\, \forall a, b, n \in \nn$$
+
+        \textbf{Proof : }We will prove this by contradiction. Let  $n,a,b \in \nn$ such that $n \cdot a = n \cdot b$\\ and $a \neq b$ Then, there are two possible cases : \\
+        \textbf{Case 1 : } $a = b + k$ where $k \in \nn$
+        Multiplying n on both sides we get, 
+        \begin{align*}
+            &n \cdot a = n \cdot (b + k)\\
+            \Rightarrow &n \cdot a = n \cdot b + n \cdot k \tag{Distributive Property}\\
+            \Rightarrow &n \cdot a \neq n \cdot b
+        \end{align*} 
+        which contradicts our assumption. \\
+        \textbf{Case 2 : } $b = a + k$ where $k \in \nn$
+        Multiplying n on both sides we get,
+        \begin{align*}
+            &n \cdot b = n \cdot (a + k)\\
+            \Rightarrow &n \cdot b = n \cdot a + n \cdot k \tag{Distributive Property}\\
+            \Rightarrow &n \cdot b \neq n \cdot a
+        \end{align*} 
+        which also contradicts our assumption. 
+\\ \\
+        Hence our assumption must be wrong, and $a = b$. This proves our claim.
+
+\end{document}
