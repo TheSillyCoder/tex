@@ -33,7 +33,7 @@
 	    $N_k$ is also countable. The set of all finite subsets of $\nn$,
 	    $$X := \bigcup_{n \in \nn} N_n$$ is the countable union of countable sets, and hence is countable. \qed
 
-	    \textbf{Note : }The set $X$ must not be confused with $\p(\nn)$ even though both of them may seem similar as $n$ grows larger and larger, 
+	    \textbf{Note : }The set $X$ must not be confused with $\p(\nn)$. Even though both of them may seem similar as $n$ grows larger and larger, 
 	    it's easy to see that $\nn \in \p(\nn) \text{ but } \nn \notin X$. Hence, $X \neq \p(\nn)$
     \item Prove that $\nn \times \nn$ is countable.
 
@@ -86,7 +86,14 @@
     
     \textbf{Solution : }We know that $\z^4$ is countable. Let $\z^4 = \{z_1, z_2, \dots \}$. Let us define a function $f : \nn \to \p(A)$ as, $$f(n) := A_n = \{a \in \rn : pa^3 + qa^2 + ra + s = 0, (p,q,r,s) = z_n \in \z^4 \}$$ Since, $A_n$ can have atmost 4 elements, $A_n$ is finite and hence countable for all $n \in \nn$. Also, $$A = \bigcup_{n\in\nn} A_n$$ Hence, $A$ is also countable since the countable union of countable sets is countable. \qed
     \item Let $A$ be a finite set. Prove that the set of all sequences of elements in $A$ of finite length is countable.
+
+	    \textbf{Solution : }Each finite sequence of elements in A of length $n \in \nn$ can be written as 
+	    an element of $A^n$. Since $A$ is countable, $A^n$ is also countable $\forall n\in \nn$
+	    Hence, the set of all sequences of elements in A of finite length, 
+	    $$ X:=\bigcup_{n \in \nn} A^n$$ is the countable union of countable sets and hence, is countable. \qed
     \item Prove that if $X$ is countable and $f : X \to Y$ is a surjective function then $Y$ is countable.
+
+	    \textbf{Solution : } Look at the solution of 23(c).
     \item Let $A$ be an infinite set. If there is an infinite sequence in which each element of $A$ appears at least once, then show that $A$ is countable.
     
     \textbf{Solution : } Since there is an infinite sequence in which each element of $A$ appears at least once, $\exists f : \nn \to A$ such that $f$ is surjective. Since $\nn$ is countable, $A$ must also be countable. \qed    
@@ -102,6 +109,9 @@
     \end{equation*}
     Then, $f(n) \neq f_n(n) \,\,\, \forall n \in \nn$, i.e. $f \neq f_n \,\,\, \forall n \in \nn$ Hence, $f \notin S$. This is a contradiction since, $S$ is the set of all functions from $N$ to $N$. Hence, the set $S$ is uncountable. \qed
     \item Prove that the set of all decreasing functions from $\nn$ to $\nn$ is countable.
+
+	    \textbf{Possible Solution : }This is essentially the same as Question 1, since an infinite decreasing sequence in $\nn$
+	    is finite if we chop off all the repeating 1's at the end except the first 1.
     \item Let $X$ and $Y$ be two nonempty finite sets. Then, is the set of all functions from $X$ to $Y$ (i) finite (ii) countably infinite (iii) uncountable? Give justifications.
     \item Prove that a set is infinite iff it is bijective with a proper subset of itself.
     \item Prove that if $A \cap B = \phi$ then $\p(A \cup B) = \p(A) \times \p(B)$
@@ -208,6 +218,6 @@
     \item Are the sets $\p(\rn)$ and $\p(\nn)$ equipotent? Give justification. 
 
     \textbf{Solution : }We know from questions 24 and 25, $\p(\nn) \sim [0, 1] \sim (0, 1)$.
-    Also consider the function $f : (0, 1) \to \rn$ defined as $f(x) = \tan(\sin^{-1}(2x - 1))$. It can be shown to be a bijection. Hence, $(0, 1) \sim \rn$. Hence, $\p(\nn) \sim \rn$. Now, by cantor's theorem we know that $P(\rn) \not \sim \rn$. Hence, $\p(\nn) \not\sim \p(\rn)$ \qed
+    Also consider the function $f : (0, 1) \to \rn$ defined as $f(x) = \tan(\sin^{-1}(2x - 1))$. It can be shown to be a bijection. Hence, $(0, 1) \sim \rn$. Hence, $\p(\nn) \sim \rn$. Now, by Cantor's theorem we know that $P(\rn) \not \sim \rn$. Hence, $\p(\nn) \not\sim \p(\rn)$ \qed
 \end{enumerate}
 \end{document}
