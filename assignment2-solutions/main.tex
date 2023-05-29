@@ -28,7 +28,7 @@
 
 	    \textbf{Solution : }Let $N_n$ denote the set of all subsets of $\nn$ with $n$ elements.
 	    Then consider the function $f : N_n \to \nn$ defined as, 
-	    $$f(S) = \sum_{n\in\nn} 10^{n} \,\,\, \forall S \in N_n$$
+	    $$f(S) = \sum_{n\in S} 10^{n} \,\,\, \forall S \in N_n$$
 	    $f$ can be shown to be injective. Since $f$ is an injection from $N_k$ to $\nn$ which is a countable set, 
 	    $N_k$ is also countable. The set of all finite subsets of $\nn$,
 	    $$X := \bigcup_{n \in \nn} N_n$$ is the countable union of countable sets, and hence is countable. \qed
@@ -112,7 +112,9 @@
 
 	    \textbf{Possible Solution : }This is essentially the same as Question 1, since an infinite decreasing sequence in $\nn$
 	    is finite if we chop off all the repeating 1's at the end except the first 1.
-    \item Let $X$ and $Y$ be two nonempty finite sets. Then, is the set of all functions from $X$ to $Y$ (i) finite (ii) countably infinite (iii) uncountable? Give justifications.
+    \item Let $X$ and $Y$ be two nonempty finite sets. Then, is the set of all functions from $X$ to $Y$ (i) finite (ii) countably infinite (iii) uncountable? Give justifications
+
+	    \textbf{Solution : }Let's assume that the set $X$ has $m$ elements and the set $Y$ has $n$ elements. Then, For each element in $X$, there are $n$ possible elements it can map to. Hence, the total number of functions will be $n^m$. Hence, the set of all functions from $X$ to $Y$ is finite. \qed
     \item Prove that a set is infinite iff it is bijective with a proper subset of itself.
     \item Prove that if $A \cap B = \phi$ then $\p(A \cup B) = \p(A) \times \p(B)$
     \item Is the set of all infinite sequences of 0's and 1's finite, countably infinite or uncountable? Give justification.
@@ -205,15 +207,22 @@
     Similarly, $g$ can be shown to be a bijection. Also, $h$ is clearly a bijection And thus, the function $F : (0, 1) \to [0, 1]$ defined as, $$F(x) = g\circ h\circ f(x) \, \, \, \forall x \in (0,1)$$ is a bijection. Hence, $(0,1) \sim [0, 1]$ \qed
     \item Show that the sets $[0, 1]$ and $\p(\nn)$ are equipotent.
 
-	    \textbf{Solution : }Consider the function $f : \p(\nn) \to [0,1]$ deifned as, 
-	    $$f(S) = \sum_{n\in S} 10^{-n} \,\,\, \forall n \in \nn$$ It can be shown that $f$ is injective. 
-	    Consider the function $g: [0, 1] \to \p(\nn)$ defined as, 
-	    $$g(x) = \{\left \lfloor 10^n(x)_2 \right \rfloor : n \in \nn \}$$ 
-	    where $(x)_2$ denotes the binary expansion of the number $x$.
-	    Since the binary expansion of every real number is unique, $g$ is also an injection. 
+	    \textbf{Solution : }Consider the function $f:\p(\nn) \to [0,1]$ defined as,
+	    $$f(S) = \sum_{n \in S} 2^{-n} \,\,\, \forall n \in \nn$$
+	    Since the binary representation of every real number is unique, 
+	    $f$ can be shown to be a bijection. Hence, $[0,1] \sim \p(\nn)$. \qed
 
-	    Since both $f: \p(\nn) \to [0,1]$ and $g: [0,1] \to \p(\nn)$ are injective, by Schröder–Bernstein theorem, it is possible to find
-	    a bijection from $[0, 1] \to \p(\nn)$. Hence, $[0, 1] \sim \p(\nn)$ \qed
+	    % \textbf{Alternate Solution : }Consider the function $f : \p(\nn) \to [0,1]$ deifned as, 
+	    % $$f(S) = \sum_{n\in S} 10^{-n} \,\,\, \forall S \in \p(\nn)$$ It can be shown that $f$ is injective. 
+	    % Consider the function $g: [0, 1] \to \p(\nn)$ defined as, 
+	    % \begin{align*}
+	    % g(x) = \{\left \lfloor 10^n(x)_2 \right \rfloor : n \in \nn \} \tag{hehehehe} 
+	    % \end{align*}
+	    % where $(x)_2$ denotes the binary expansion of the number $x$.
+	    % Since the binary expansion of every real number is unique, $g$ is also an injection. 
+
+	    % Since both $f: \p(\nn) \to [0,1]$ and $g: [0,1] \to \p(\nn)$ are injective, by Schröder–Bernstein theorem, it is possible to find
+	    % a bijection from $[0, 1] \to \p(\nn)$. Hence, $[0, 1] \sim \p(\nn)$ \qed
 	    
     \item Are the sets $\p(\rn)$ and $\p(\nn)$ equipotent? Give justification. 
 
