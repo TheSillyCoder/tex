@@ -1,0 +1,213 @@
+\documentclass[10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+% \usepackage{enumitem}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+% \usepackage[hidelinks]{hyperref}
+
+\newcommand{\nn}{\mathbb{N}}
+\newcommand{\rn}{\mathbb{R}}
+\newcommand{\q}{\mathbb{Q}}
+\newcommand{\p}{\mathcal{P}}
+\newcommand{\z}{\mathbb{Z}}
+\title{MA1201 - Assignment 2 Solutions}
+\author{Debayan Sarkar}
+\date{May 28, 2023}
+
+\geometry{a4paper, margin=0.8in}
+\setlength{\parindent}{0pt}
+\begin{document}
+\maketitle
+\begin{enumerate}
+    \item Prove that the collection of all finite subsets of $\nn$ is countable.
+
+	    \textbf{Solution : }Let $N_n$ denote the set of all subsets of $\nn$ with $n$ elements.
+	    Then consider the function $f : N_n \to \nn$ defined as, 
+	    $$f(S) = \sum_{n\in\nn} 10^{n} \,\,\, \forall S \in N_n$$
+	    $f$ can be shown to be injective. Since $f$ is an injection from $N_k$ to $\nn$ which is a countable set, 
+	    $N_k$ is also countable. The set of all finite subsets of $\nn$,
+	    $$X := \bigcup_{n \in \nn} N_n$$ is the countable union of countable sets, and hence is countable. \qed
+
+	    \textbf{Note : }The set $X$ must not be confused with $\p(\nn)$ even though both of them may seem similar as $n$ grows larger and larger, 
+	    it's easy to see that $\nn \in \p(\nn) \text{ but } \nn \notin X$. Hence, $X \neq \p(\nn)$
+    \item Prove that $\nn \times \nn$ is countable.
+
+    \textbf{Solution : }Let us define a function $f : \nn \times \nn \to \nn$ as $$f((x, y)) = 2^x 3^y \,\,\, \forall (x, y) \in \nn \times \nn$$ Let $(x_1, y_1) , (x_2, y_2) \in \nn \times \nn$ such that, $f((x_1, y_1)) = f((x_2, y_2))$. Then, 
+    \begin{align*}
+        f((x_1, y_1)) = f((x_2, y_2))
+        \Rightarrow &2^{x_1}3^{y_1} = 2^{x_2}3^{y_2} \\
+        \Rightarrow &2^{x_1 - x_2} = 3^{y_2 - y_1}\\
+        \Rightarrow &x_1 = x_2 \And y_1 = y_2 \tag{Since 2 and 3 are prime numbers}
+    \end{align*}
+    Hence, $f$ is injective. Since, $f$ is an injection from $\nn \times \nn$ to $\nn$, and $\nn$ is countable, $\nn \times \nn$ is also countable. \qed
+    \item Show that the set $F = \{ p + q\sqrt{2}: p,q \in \q \}$ is countable.
+    
+    \textbf{Solution : }Let us define $f: \q \times \q \to F$ as, $$f((x, y)) := x + y\sqrt{2} \,\,\, \forall (x, y) \in \q \times \q$$ Now we claim that $f$ is a bijection. Let $(a_1, b_1), (a_2, b_2) \in \q \times \q$ such that $f((a_1, b_1)) = f((a_2, b_2))$. Then, 
+    \begin{align*}
+        f((a_1, b_1)) = f((a_2, b_2) )
+        \Rightarrow &a_1 + b_1\sqrt{2} = a_2 + b_2\sqrt{2} \\
+        \Rightarrow &(a_1 - a_2) = (b_2 - b_1)\sqrt{2} \\
+        \Rightarrow &a_1 = a_2 \And b_1 = b_2 \tag{$\q$ is closed under addition} \\ 
+        \Rightarrow &(a_1, b_1) = (a_2, b_2)
+    \end{align*}
+    Hence, $f$ is injective. Now, let $z \in F$ be arbitrary. Then, $z = p + q\sqrt{2}$ for some $p, q \in \q$. Then, $f((p,q)) = p + q\sqrt{2} = z$. Hence $f$ is onto. Thus, $f$ is bijective. Hence, $\q \times \q \sim F$. Since $\q \times \q$ is countable, $F$ is also countable. \qed
+    \item Prove that the set of all polynomials of degree $\leq$ 3 with integer coefficients is countable.
+
+    \textbf{Solution : } Let $S$ be the set of all polynomials of degree $\leq$ 3 with integer coefficients. Let us define $f : \z \times \z \times \z \times \z \to S$  as, $$f((a, b, c, d)) := P(x) \,\,\, \forall (a, b, c, d) \in \z \times \z \times \z \times \z$$ Where $P(x) = ax^3 + bx^2 + cx + d \,\,\, \forall x \in \rn$. We claim that $f$ is a bijection. Let $(a_1, b_1, c_1, d_1), (a_2, b_2, c_2, d_2) \in \z \times \z \times \z \times \z$ such that $f((a_1, b_1, c_1, d_1)) \neq f((a_2, b_2, c_2, d_2))$. Let's assume $(a_1, b_1, c_1, d_1) = (a_2, b_2, c_2, d_2)$. Then, 
+    \begin{align*}
+        &(a_1, b_1, c_1, d_1) = (a_2, b_2, c_2, d_2) \\
+        \Rightarrow &a_1 = a_2 \And b_1 = b_2 \And c_1 = c_2 \And d_1 = d_2 \\
+        \Rightarrow &a_1x^3 = a_2x^3 \And b_1 = b_2x^2 \And c_1x = c_2x \And d_1 = d_2 \,\,\, \forall x \in \rn\\
+        \Rightarrow &a_1x^3 + b_1x^2 + c_1x + d_1 = a_2x^3 + b_2x^2 + c_2x + d_2 \,\,\, \forall x \in \rn \\
+        \Rightarrow &f((a_1, b_1, c_1, d_1)) = f((a_2, b_2, c_2, d_2))
+    \end{align*}
+    this is a contradiction. Hence, $f((a_1, b_1, c_1, d_1)) \neq f((a_2, b_2, c_2, d_2)) \Rightarrow (a_1, b_1, c_1, d_1) \neq (a_2, b_2, c_2, d_2)$ thus, $f$ is injective. Now, let $P(x) \in S$ defined as  $P(x) = ax^3 + bx^2 + cx + d \forall x \in \rn$ be arbitrary. Then let $z = (a, b, c, d) \in \z \times \z \times \z \times \z$. Then, clearly, $f(z) = P(x)$. Thus, $f$ is surjective. Hence, $f$ is bijective. Thus, $\z \times \z \times \z \times \z \sim S$. Since $\z \times \z \times \z \times \z$ is countable, $S$ is also countable. \qed
+    \item Prove that the sets $(0, \infty)$ and $\rn$ are equipotent.
+    
+    \textbf{Solution : }Let us define $f : (0, \infty) \to \rn$ as, $$f(x) := \ln(x) \,\,\,\, \forall x \in (0, \infty)$$ Now, we claim that $f$ is a bijection. 
+
+    Let $x_1, x_2 \in (0, \infty)$ such that $f(x_1) = f(x_2)$. 
+    \begin{align*}
+        f(x_1) = f(x_2)
+        \Rightarrow &\ln(x_1) = \ln(x_2) \\
+        \Rightarrow &e^{\ln(x_1)} = e^{\ln(x_2)} \\
+        \Rightarrow &x_1 = x_2
+    \end{align*}
+    Hence, $f$ is injective. Let $y \in \rn$ be arbitrary. Then let us define $x := e^y \in (0, \infty)$. Then, $\ln(x) = \ln(e^y) = y$. Hence, $f$ is surjective. Thus, $f$ is a bijection. This proves our claim. Since $f$ is a bijection, the sets $(0, \infty)$ and $\rn$ are equipotent. \qed
+    \item Prove that if $A$ and $B$ are countable then $A \times B$ is countable. In general for every $n \in \nn$ if $A_1, A_2, \dots , A_n$ are countable then $A_1 \times A_2 \times \dots \times A_n$ is countable.
+    \item Prove or disprove that $A_1 \times A_2 \times \dots$ is countable, where $A_i$ is a countable set.
+    \item Prove or disprove that countable union of countable sets in countable.
+    \item Prove that the set $A = \{ a \in \rn : \exists a^4 + pa^3 + qa^2 + ra + s = 0 \}$ is countable.
+    
+    \textbf{Solution : }We know that $\z^4$ is countable. Let $\z^4 = \{z_1, z_2, \dots \}$. Let us define a function $f : \nn \to \p(A)$ as, $$f(n) := A_n = \{a \in \rn : pa^3 + qa^2 + ra + s = 0, (p,q,r,s) = z_n \in \z^4 \}$$ Since, $A_n$ can have atmost 4 elements, $A_n$ is finite and hence countable for all $n \in \nn$. Also, $$A = \bigcup_{n\in\nn} A_n$$ Hence, $A$ is also countable since the countable union of countable sets is countable. \qed
+    \item Let $A$ be a finite set. Prove that the set of all sequences of elements in $A$ of finite length is countable.
+    \item Prove that if $X$ is countable and $f : X \to Y$ is a surjective function then $Y$ is countable.
+    \item Let $A$ be an infinite set. If there is an infinite sequence in which each element of $A$ appears at least once, then show that $A$ is countable.
+    
+    \textbf{Solution : } Since there is an infinite sequence in which each element of $A$ appears at least once, $\exists f : \nn \to A$ such that $f$ is surjective. Since $\nn$ is countable, $A$ must also be countable. \qed    
+    \item Prove that the set of all functions from $\nn$ to $\nn$ is uncountable.
+
+    \textbf{Solution : }Let $S$ be the set of all functions from $\nn$ to $\nn$. We claim that $S$ is uncountable. Let us assume to the contrary that, $S$ is countable. Then, the set $S$ can be written as $$S = \{f_1, f_2, \dots \}$$ Now, let us construct $f : \nn \to \nn$ as, 
+    \begin{equation*}
+        f(n) = 
+        \begin{cases}
+            1 & \text{if } f_n(n) = 1 \\
+            2 & \text{if } f_n(n) \neq 1
+        \end{cases}
+    \end{equation*}
+    Then, $f(n) \neq f_n(n) \,\,\, \forall n \in \nn$, i.e. $f \neq f_n \,\,\, \forall n \in \nn$ Hence, $f \notin S$. This is a contradiction since, $S$ is the set of all functions from $N$ to $N$. Hence, the set $S$ is uncountable. \qed
+    \item Prove that the set of all decreasing functions from $\nn$ to $\nn$ is countable.
+    \item Let $X$ and $Y$ be two nonempty finite sets. Then, is the set of all functions from $X$ to $Y$ (i) finite (ii) countably infinite (iii) uncountable? Give justifications.
+    \item Prove that a set is infinite iff it is bijective with a proper subset of itself.
+    \item Prove that if $A \cap B = \phi$ then $\p(A \cup B) = \p(A) \times \p(B)$
+    \item Is the set of all infinite sequences of 0's and 1's finite, countably infinite or uncountable? Give justification.
+
+    \textbf{Solution : }Let $S$ be the set of all infinite sequences of 0's and 1's. We claim that $S$ is uncountable. Let us assume to the contrary that, $S$ is countable. Then, the set $S$ can be written as, $$S = \{ a_1, a_2, a_3, \dots \}$$ Also, $i^{th}$ element in $S$ can be indexed as well like this, $$a_i = a_{i1} a_{i2} a_{i3} \dots \text{ where } a_{ij} \in \{0, 1\} \,\,\, \forall i,j \in \nn$$ 
+    Now, let us construct $a_0$ as ,
+    \begin{equation*}
+        a_{0n} = 
+        \begin{cases}
+            1 & \text{if }a_{nn} = 0 \\
+            0 & \text{if }a_{nn} \neq 0\\
+        \end{cases}
+        \,\,\, \forall n \in \nn
+    \end{equation*}
+    Clearly $a_0 \neq a_n \,\,\, \forall n \in \nn$. Hence, $a_0 \notin S$. But this is a contradiction since $S$ is the set of all infinite sequences of 0's and 1's. Hence, our assumption is wrong and the set $S$ is uncountable. \qed
+    \item Give an example of two sets $A$ and $B$ such that $B \subset A$ and $B$ is bijective with $A$ but $B \neq A$.
+
+    \textbf{Solution : }Let $A := \nn$ and $B := \{2n : n \in \nn \}$. Then, clearly $B \subset A$ and $B \neq A$ but the function $f : A \to B$ defined as $f(a) = 2a \,\,\, \forall a \in A$ is bijective i.e. $A \sim B$.
+    \item Prove that if there exists an injective function from $(0, 1)$ to a set $A$ then the set A is uncountable.
+    \item Suppose that $A \subseteq B$ then prove that 
+    \begin{enumerate}
+        \item $B$ is finite $\implies$ $A$ is finite.
+        \item $A$ is infinite $\implies$ $B$ is infinite.
+        \item $B$ is countable $\implies$ $A$ is countable.
+        \item $A$ is uncountable $\implies$ $B$ is uncountable.
+    \end{enumerate}
+    \item Suppose $f : A \to B$ is injective then prove that 
+    \begin{enumerate}
+        \item $B$ is finite $\implies$ $A$ is finite.
+        \item $A$ is infinite $\implies$ $B$ is infinite.
+        \item $B$ is countable $\implies$ $A$ is countable.
+        \item $A$ is uncountable $\implies$ $B$ is uncountable.
+    \end{enumerate}
+    \item Suppose $f : A \to B$ is surjective then prove that 
+    \begin{enumerate}
+        \item $A$ is finite $\implies$ $B$ is finite.
+        \item $B$ is infinite $\implies$ $A$ is infinite.
+        \item $A$ is countable $\implies$ $B$ is countable.
+        \item $B$ is uncountable $\implies$ $A$ is uncountable.
+    \end{enumerate}
+    \item Show that the sets $[0, 1]$ and $(0, 1)$ are equipotent.
+    
+    \textbf{Solution : }Let us define $f : (0, 1) \to (0, 1]$, $g : [0, 1) \to [0, 1]$ and $h: (0,1] \to [0, 1)$ as, 
+    \begin{equation*}
+        f(x) = 
+        \begin{cases}
+            \frac{1}{n-1} & \text{,if } \exists n \in \nn \text{ such that }x = \frac{1}{n}\\
+            x & \text{,if } x \neq \frac{1}{n} \forall n \in \nn \\
+        \end{cases}
+    \end{equation*}
+    \begin{equation*}
+        g(x) = 
+        \begin{cases}
+            \frac{1}{n-1} & \text{,if } \exists n \in \nn \text{ such that }x = \frac{1}{n}\\
+            x & \text{,if } x \neq \frac{1}{n} \forall n \in \nn \\
+        \end{cases}
+    \end{equation*}
+    $$h(x) = 1 - x\,\,\, \forall x \in (0,1]$$
+    Let $x, y \in (0, 1)$ such that $x \neq y$.
+    
+    \textbf{Case 1} $x = \frac{1}{m}$ and $y = \frac{1}{n}$ for some $m,n \in \nn$
+    \begin{align*}
+        x \neq y
+        \Rightarrow &\frac{1}{m} \neq \frac{1}{n} \\
+        \Rightarrow &m \neq n \\
+        \Rightarrow &m - 1 \neq n - 1 \\
+        \Rightarrow &\frac{1}{m - 1} \neq \frac{1}{n - 1} \\
+        \Rightarrow &f(x) \neq f(y)
+    \end{align*}
+    \textbf{Case 2} $x \neq \frac{1}{m}, y \neq \frac{1}{n} \,\,\, \forall m,n \in \nn$
+        \begin{align*}
+            f(x) = x \And f(y) = y\text{ and since, }x \neq y \text{ we have } f(x) \neq f(y)
+        \end{align*}
+    \textbf{Case 3} $x = \frac{1}{m} \text{ for some } m \in \nn$ and $y \neq \frac{1}{n} \,\,\, \forall n \in \nn$
+    \begin{align*}
+        f(x) = \frac{1}{n - 1} \And f(y) = y \neq \frac{1}{n - 1} \Rightarrow f(x) \neq f(y)
+    \end{align*}
+    Hence $f$ is one-one. Now, let $z \in (0, 1]$ be arbitrary
+    
+    \textbf{Case 1} $z = \frac{1}{n} \text{ for some } n \in \nn$
+
+        $\text{Let us define }x := \frac{1}{n + 1} \text{ then }, f(x) = \frac{1}{n} = z$
+
+    \textbf{Case 2} $z \neq \frac{1}{n} \,\,\,\forall n \in \nn$
+
+        Let us set $x = z$. Then we have $f(x) = x = z$
+
+    Hence $f$ is surjective. Thus, $f$ is a bijection.
+    
+    Similarly, $g$ can be shown to be a bijection. Also, $h$ is clearly a bijection And thus, the function $F : (0, 1) \to [0, 1]$ defined as, $$F(x) = g\circ h\circ f(x) \, \, \, \forall x \in (0,1)$$ is a bijection. Hence, $(0,1) \sim [0, 1]$ \qed
+    \item Show that the sets $[0, 1]$ and $\p(\nn)$ are equipotent.
+
+	    \textbf{Solution : }Consider the function $f : \p(\nn) \to [0,1]$ deifned as, 
+	    $$f(S) = \sum_{n\in S} 10^{-n} \,\,\, \forall n \in \nn$$ It can be shown that $f$ is injective. 
+	    Consider the function $g: [0, 1] \to \p(\nn)$ defined as, 
+	    $$g(x) = \{\left \lfloor 10^n(x)_2 \right \rfloor : n \in \nn \}$$ 
+	    where $(x)_2$ denotes the binary expansion of the number $x$.
+	    Since the binary expansion of every real number is unique, $g$ is also an injection. 
+
+	    Since both $f: \p(\nn) \to [0,1]$ and $g: [0,1] \to \p(\nn)$ are injective, by Schröder–Bernstein theorem, it is possible to find
+	    a bijection from $[0, 1] \to \p(\nn)$. Hence, $[0, 1] \sim \p(\nn)$ \qed
+	    
+    \item Are the sets $\p(\rn)$ and $\p(\nn)$ equipotent? Give justification. 
+
+    \textbf{Solution : }We know from questions 24 and 25, $\p(\nn) \sim [0, 1] \sim (0, 1)$.
+    Also consider the function $f : (0, 1) \to \rn$ defined as $f(x) = \tan(\sin^{-1}(2x - 1))$. It can be shown to be a bijection. Hence, $(0, 1) \sim \rn$. Hence, $\p(\nn) \sim \rn$. Now, by cantor's theorem we know that $P(\rn) \not \sim \rn$. Hence, $\p(\nn) \not\sim \p(\rn)$ \qed
+\end{enumerate}
+\end{document}
