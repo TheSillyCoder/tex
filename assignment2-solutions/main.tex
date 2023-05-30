@@ -84,7 +84,7 @@
     \item Prove or disprove that countable union of countable sets in countable.
     \item Prove that the set $A = \{ a \in \rn : \exists a^4 + pa^3 + qa^2 + ra + s = 0 \}$ is countable.
     
-    \textbf{Solution : }We know that $\z^4$ is countable. Let $\z^4 = \{z_1, z_2, \dots \}$. Let us define a function $f : \nn \to \p(A)$ as, $$f(n) := A_n = \{a \in \rn : pa^3 + qa^2 + ra + s = 0, (p,q,r,s) = z_n \in \z^4 \}$$ Since, $A_n$ can have atmost 4 elements, $A_n$ is finite and hence countable for all $n \in \nn$. Also, $$A = \bigcup_{n\in\nn} A_n$$ Hence, $A$ is also countable since the countable union of countable sets is countable. \qed
+    \textbf{Solution : }We know that $\z^4$ is countable. Let $\z^4 = \{z_1, z_2, \dots \}$. Then, for some $n \in \nn$ let us construct $A_n$ as, $$A_n = \{a \in \rn : pa^3 + qa^2 + ra + s = 0, (p,q,r,s) = z_n \in \z^4 \}$$ Since, $A_n$ can have atmost 4 elements, $A_n$ is finite and hence countable for all $n \in \nn$. Also, $$A = \bigcup_{n\in\nn} A_n$$ Hence, $A$ is also countable since the countable union of countable sets is countable. \qed
     \item Let $A$ be a finite set. Prove that the set of all sequences of elements in $A$ of finite length is countable.
 
 	    \textbf{Solution : }Each finite sequence of elements in A of length $n \in \nn$ can be written as 
@@ -137,7 +137,32 @@
 	    Hence, $S$ must be inifinte. \qed
 
 
-    \item Prove that if $A \cap B = \phi$ then $\p(A \cup B) = \p(A) \times \p(B)$
+    \item Prove that if $A \cap B = \phi$ then $\p(A \cup B) \sim \p(A) \times \p(B)$
+
+	    \textbf{Solution : }Consider the function $f : \p(A \cup B) \to \p(A) \times \p(B)$ defined as,
+	    $$f(S) = (\{ x : x \in S \cap A \},\{ y : y \in S \cap B \}) \,\,\, \forall S \in \p(A \cup B)$$
+	    Let $S_1, S_2 \in \p(A \cup B)$ such that $S_1 \neq S_2$. WLOG we can assume that, $\exists x \in S_1 \text{ such that } x \notin S_2$
+
+	    \textbf{Case 1 }$x \in A$ 
+
+    $x \in A \Rightarrow x \in S_1 \cap A \text{ and } x \notin S_2 \cap A$
+    Hence, $\{a : a \in S_1 \cap A \} \neq \{ b : b \in S_2 \cap A \} \Rightarrow f(S_1) \neq f(S_2)$
+
+	    \textbf{Case 2 }$x \in B$ 
+
+    $x \in B \Rightarrow x \in S_1 \cap B \text{ and } x \notin S_2 \cap B$
+    Hence, $\{a : a \in S_1 \cap B \} \neq \{ b : b \in S_2 \cap B \} \Rightarrow f(S_1) \neq f(S_2)$
+
+    Hence, $f$ is injective. Now, let $(S_A, S_B) \in \p(A) \times \p(B)$ be arbitrary. Tthen, $S_A \subseteq A$ and $S_B \subseteq B$.
+    Let $S = S_A \cup S_B$. Then, $S \cap A = S_A \cup S_B \cap A = S_A \cup \phi = S_A (\text{ since } A \cap B = \phi)$. Similarly $S \cap B = S_B$.
+    Then, 
+    \begin{align*}
+	f(S) &= (\{ x : x \in S \cap A \}, \{ y : y \in S \cap B \}) \\
+     	&= (\{x : x \in S_A\}, \{y : y \in S_B\})\\
+	&=(S_A, S_B)
+    \end{align*}
+    Hence, $f$ is onto. Thus $f$ is a bijection and thus, $\p(A \cup B) \sim \p(A) \times \p(B)$ \qed
+
     \item Is the set of all infinite sequences of 0's and 1's finite, countably infinite or uncountable? Give justification.
 
     \textbf{Solution : }Let $S$ be the set of all infinite sequences of 0's and 1's. We claim that $S$ is uncountable. Let us assume to the contrary that, $S$ is countable. Then, the set $S$ can be written as, $$S = \{ a_1, a_2, a_3, \dots \}$$ Also, $i^{th}$ element in $S$ can be indexed as well like this, $$a_i = a_{i1} a_{i2} a_{i3} \dots \text{ where } a_{ij} \in \{0, 1\} \,\,\, \forall i,j \in \nn$$ 
