@@ -8,7 +8,7 @@
 % \usepackage{enumitem}
 \usepackage[english]{babel}
 \usepackage{amsthm}
-% \usepackage[hidelinks]{hyperref}
+\usepackage[hidelinks]{hyperref}
 
 \newcommand{\nn}{\mathbb{N}}
 \newcommand{\rn}{\mathbb{R}}
@@ -107,11 +107,14 @@
             2 & \text{if } f_n(n) \neq 1
         \end{cases}
     \end{equation*}
-    Then, $f(n) \neq f_n(n) \,\,\, \forall n \in \nn$, i.e. $f \neq f_n \,\,\, \forall n \in \nn$ Hence, $f \notin S$. This is a contradiction since, $S$ is the set of all functions from $N$ to $N$. Hence, the set $S$ is uncountable. \qed
+    Then, $f(n) \neq f_n(n) \,\,\, \forall n \in \nn$, i.e. $f \neq f_n \,\,\, \forall n \in \nn$ Hence, $f \notin S$. This is a contradiction since, $S$ is the set of all functions from $\nn$ to $\nn$. Hence, the set $S$ is uncountable. \qed
+
+    \textbf{Note : }This approach of constructing an element by making all the diagonal elements unequal  to prove the uncountability of a set is known as 
+    Cantor's diagonal argument. This approach will be used multiple times throughout the solutions.
     \item Prove that the set of all decreasing functions from $\nn$ to $\nn$ is countable.
 
-	    \textbf{Possible Solution : }This is essentially the same as Question 1, since an infinite decreasing sequence in $\nn$
-	    is finite if we chop off all the repeating 1's at the end except the first 1.
+	    \textbf{ Solution : } TODO
+
     \item Let $X$ and $Y$ be two nonempty finite sets. Then, is the set of all functions from $X$ to $Y$ (i) finite (ii) countably infinite (iii) uncountable? Give justifications
 
 	    \textbf{Solution : }Let's assume that the set $X$ has $m$ elements and the set $Y$ has $n$ elements. Then, For each element in $X$, there are $n$ possible elements it can map to. Hence, the total number of functions will be $n^m$. Hence, the set of all functions from $X$ to $Y$ is finite. \qed
@@ -120,7 +123,7 @@
 	    \textbf{Solution : }Let's assume $S$ is an infinite set. Let $A \subset S$ be countable.
 	    We know such a subset exists because, every infinite set has a countable subset. Then,
 	    the set $A$ can be written as $A = \{ a_1, a_2, \dots \}$. Let us split thus sets into two sets $A_1$ and $A_2$, as
-	    $A_1 = \{ a_1, a_3, \dots \}$ and $A_2 = \{ a_2, a_4, \dots \}$. Now, let us consider the function $f: S \to S \setminus A_2$ defined as,
+	    $A_1 = \{ a_1, a_3, \dots \}$ and $A_2 = \{ a_2, a_4, \dots \}$. Now, let us consider the function $f: S \to S \setminus A_1$ defined as,
 	    \begin{equation*}
 		    f(x) = 
 		    \begin{cases}
@@ -180,6 +183,27 @@
 
     \textbf{Solution : }Let $A := \nn$ and $B := \{2n : n \in \nn \}$. Then, clearly $B \subset A$ and $B \neq A$ but the function $f : A \to B$ defined as $f(a) = 2a \,\,\, \forall a \in A$ is bijective i.e. $A \sim B$.
     \item Prove that if there exists an injective function from $(0, 1)$ to a set $A$ then the set A is uncountable.
+
+	    \textbf{Solution :} Let $f : (0, 1) \to A$ be injective. Since, $(0, 1)$ is uncountable,
+	    $A$ is uncountable.
+
+	    Now we shall prove that $(0, 1)$ is uncountable. Let us assume to the contrary that $(0, 1$ is countable.
+	    Let $X = (0, 1)$. Then, the set $X$ can be written as, $X = \{ x_1, x_2, \dots \}$. Also, since $x_i \in (0, 1)$, each $x_i$ can be written as,
+	    $$x_i = 0.x_{i1}x_{i2} \dots $$ where $x_{ij}$ refers to the $j^{th}$ digit after the decimal point in the decimal
+	    expansion of $x_i$.
+	    Now, let us construct $x_0$ as,
+	    \begin{equation*}
+		    x_{0n} = 
+		    \begin{cases}
+			    1 & \text{ if } x_{nn} \neq 1 \\
+			    2 & \text{ if } x_{nn} = 1
+		    \end{cases}
+		    \forall n \in \nn
+	    \end{equation*}
+	    Then, $\forall n \in \nn \text{ we have, } x_{0n} \neq x_{nn} \Rightarrow x_0 \in x_n \Rightarrow x \notin B$. This is a contradiction. Hence, $B$ cannot be countable.
+	    Hence the set $(0, 1)$ is uncountable.
+
+
     \item Suppose that $A \subseteq B$ then prove that 
     \begin{enumerate}
         \item $B$ is finite $\implies$ $A$ is finite.
