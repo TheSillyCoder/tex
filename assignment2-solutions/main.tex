@@ -116,6 +116,27 @@
 
 	    \textbf{Solution : }Let's assume that the set $X$ has $m$ elements and the set $Y$ has $n$ elements. Then, For each element in $X$, there are $n$ possible elements it can map to. Hence, the total number of functions will be $n^m$. Hence, the set of all functions from $X$ to $Y$ is finite. \qed
     \item Prove that a set is infinite iff it is bijective with a proper subset of itself.
+
+	    \textbf{Solution : }Let's assume $S$ is an infinite set. Let $A \subset S$ be countable.
+	    We know such a subset exists because, every infinite set has a countable subset. Then,
+	    the set $A$ can be written as $A = \{ a_1, a_2, \dots \}$. Let us split thus sets into two sets $A_1$ and $A_2$, as
+	    $A_1 = \{ a_1, a_3, \dots \}$ and $A_2 = \{ a_2, a_4, \dots \}$. Now, let us consider the function $f: S \to S \setminus A_2$ defined as,
+	    \begin{equation*}
+		    f(x) = 
+		    \begin{cases}
+			    x & \text{ if } x \in S \setminus A \\
+			    a_{2n} & \text{ if } x = a_n \in A
+		    \end{cases}
+	    \end{equation*}
+	    $f$ can be shown to be a bijection and hence, $S \sim S\setminus A_1 \subset S$
+
+	    Now, let us assume that $S$ is equipotent to a proper subset of itself. We shall show that
+	    $S$ is ininite. Let's assume to the contrary that, $S$ is finite. Then, Let $S$ have $n \in \nn$ elements. Then
+	    any proper subset of $S$ has $m \in \nn$ elements with $m < n$. Then, it is impossible to find a bijection between them
+	    since, for a bijection to exist between two finite sets, the number of elements in the sets must be equal. But, this is a contradiction.
+	    Hence, $S$ must be inifinte. \qed
+
+
     \item Prove that if $A \cap B = \phi$ then $\p(A \cup B) = \p(A) \times \p(B)$
     \item Is the set of all infinite sequences of 0's and 1's finite, countably infinite or uncountable? Give justification.
 
