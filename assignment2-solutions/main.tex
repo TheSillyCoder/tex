@@ -8,7 +8,7 @@
 % \usepackage{enumitem}
 \usepackage[english]{babel}
 \usepackage{amsthm}
-\usepackage[hidelinks]{hyperref}
+% \usepackage[hidelinks]{hyperref}
 
 \newcommand{\nn}{\mathbb{N}}
 \newcommand{\rn}{\mathbb{R}}
@@ -113,7 +113,16 @@
     Cantor's diagonal argument. This approach will be used multiple times throughout the solutions.
     \item Prove that the set of all decreasing functions from $\nn$ to $\nn$ is countable.
 
-	    \textbf{ Solution : } TODO
+	    \textbf{ Solution : }Let the set of all decreasing functions from $\nn$ to $\nn$ be $A$ and, let $f \in A$ be arbitrary.
+	    As a consequence of well-ordering principle, $\exists m,n \in \nn$ such that $\forall k \in \nn \text{ with }k \geq n$, 
+	    $f(k) = m$ i.e. the function becomes a constant function after $n$. We can uniquely
+	    represent this function as an ordered tuple $(f(1), f(2), f(3), \dots f(n)) \in \nn^n$.
+	    Let $A_n$ be the collection of all decreasing functions that become constant after some $n \in \nn$. Then, $A_n \subseteq \nn^n \Rightarrow A_n \text{ is countable.} \,\,\, \forall n \in \nn$
+
+	    Then, the collection of all decreasing functions from $\nn$ to $\nn$
+	    $$ A = \bigcup_{n \in \nn}A_n$$
+	    is the countable of union of countable sets and hence countable. \qed
+
 
     \item Let $X$ and $Y$ be two nonempty finite sets. Then, is the set of all functions from $X$ to $Y$ (i) finite (ii) countably infinite (iii) uncountable? Give justifications
 
