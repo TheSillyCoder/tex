@@ -58,15 +58,9 @@
     Hence, $f$ is injective. Now, let $z \in F$ be arbitrary. Then, $z = p + q\sqrt{2}$ for some $p, q \in \q$. Then, $f((p,q)) = p + q\sqrt{2} = z$. Hence $f$ is onto. Thus, $f$ is bijective. Hence, $\q \times \q \sim F$. Since $\q \times \q$ is countable, $F$ is also countable. \qed
     \item Prove that the set of all polynomials of degree $\leq$ 3 with integer coefficients is countable.
 
-    \textbf{Solution : } Let $S$ be the set of all polynomials of degree $\leq$ 3 with integer coefficients. Let us define $f : \z \times \z \times \z \times \z \to S$  as, $$f((a, b, c, d)) := P(x) \,\,\, \forall (a, b, c, d) \in \z \times \z \times \z \times \z$$ Where $P(x) = ax^3 + bx^2 + cx + d \,\,\, \forall x \in \rn$. We claim that $f$ is a bijection. Let $(a_1, b_1, c_1, d_1), (a_2, b_2, c_2, d_2) \in \z \times \z \times \z \times \z$ such that $f((a_1, b_1, c_1, d_1)) \neq f((a_2, b_2, c_2, d_2))$. Let's assume $(a_1, b_1, c_1, d_1) = (a_2, b_2, c_2, d_2)$. Then, 
-    \begin{align*}
-        &(a_1, b_1, c_1, d_1) = (a_2, b_2, c_2, d_2) \\
-        \Rightarrow &a_1 = a_2 \And b_1 = b_2 \And c_1 = c_2 \And d_1 = d_2 \\
-        \Rightarrow &a_1x^3 = a_2x^3 \And b_1 = b_2x^2 \And c_1x = c_2x \And d_1 = d_2 \,\,\, \forall x \in \rn\\
-        \Rightarrow &a_1x^3 + b_1x^2 + c_1x + d_1 = a_2x^3 + b_2x^2 + c_2x + d_2 \,\,\, \forall x \in \rn \\
-        \Rightarrow &f((a_1, b_1, c_1, d_1)) = f((a_2, b_2, c_2, d_2))
-    \end{align*}
-    this is a contradiction. Hence, $f((a_1, b_1, c_1, d_1)) \neq f((a_2, b_2, c_2, d_2)) \Rightarrow (a_1, b_1, c_1, d_1) \neq (a_2, b_2, c_2, d_2)$ thus, $f$ is injective. Now, let $P(x) \in S$ defined as  $P(x) = ax^3 + bx^2 + cx + d \forall x \in \rn$ be arbitrary. Then let $z = (a, b, c, d) \in \z \times \z \times \z \times \z$. Then, clearly, $f(z) = P(x)$. Thus, $f$ is surjective. Hence, $f$ is bijective. Thus, $\z \times \z \times \z \times \z \sim S$. Since $\z \times \z \times \z \times \z$ is countable, $S$ is also countable. \qed
+    \textbf{Solution : } Let $S$ be the set of all polynomials of degree $\leq$ 3 with integer coefficients. Let us define $f : \z \times \z \times \z \times \z \to S$  as, $$f((a, b, c, d)) := P(x) \,\,\, \forall (a, b, c, d) \in \z \times \z \times \z \times \z$$ Where $P(x) = ax^3 + bx^2 + cx + d \,\,\, \forall x \in \rn$. We claim that $f$ is a bijection. Let $(a_1, b_1, c_1, d_1), (a_2, b_2, c_2, d_2) \in \z \times \z \times \z \times \z$ such that $f((a_1, b_1, c_1, d_1)) = f((a_2, b_2, c_2, d_2)) \Rightarrow a_1x^3 + b_1x^2 + c_1x + d_1 = a_2x^3 + b_2x^2 + c_2x + d_2 \,\,\, \forall x \in \rn$.
+    Since the polynomials are equal for all values of $x$, the coefficients must be equal i.e. $(a_1, b_1, c_1, d_1) = (a_2, b_2, c_2, d_2)$. Hence, 
+    $f((a_1, b_1, c_1, d_1)) = f((a_2, b_2, c_2, d_2)) \Rightarrow (a_1, b_1, c_1, d_1) = (a_2, b_2, c_2, d_2)$ thus, $f$ is injective. Now, let $P(x) \in S$ defined as  $P(x) = ax^3 + bx^2 + cx + d \forall x \in \rn$ be arbitrary. Then let $z = (a, b, c, d) \in \z \times \z \times \z \times \z$. Then, clearly, $f(z) = P(x)$. Thus, $f$ is surjective. Hence, $f$ is bijective. Thus, $\z \times \z \times \z \times \z \sim S$. Since $\z \times \z \times \z \times \z$ is countable, $S$ is also countable. \qed
     \item Prove that the sets $(0, \infty)$ and $\rn$ are equipotent.
     
     \textbf{Solution : }Let us define $f : (0, \infty) \to \rn$ as, $$f(x) := \ln(x) \,\,\,\, \forall x \in (0, \infty)$$ Now, we claim that $f$ is a bijection. 
