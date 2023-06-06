@@ -317,9 +317,13 @@
 	    \textbf{Solution : }Consider the function $f : \p(\nn) \to [0,1]$ deifned as, 
 	    $$f(S) = \sum_{n\in S} 10^{-n} \,\,\, \forall S \in \p(\nn)$$ It can be shown that $f$ is injective. 
 	    Consider the function $g: [0, 1] \to \p(\nn)$ defined as, 
-	    \begin{align*}
-	    g(x) = \{\left \lfloor 10^n(x)_2 \right \rfloor : n \in \nn \} 
-	    \end{align*}
+	    \begin{equation*}
+	    g(x) = 
+	    \begin{cases}
+		    \phi & \text{ if } x = 0 \\
+		    \{\left \lfloor 10^n(x)_2 \right \rfloor : n \in \nn \} & \text{ if } x \neq 0
+	    \end{cases}
+	    \end{equation*}
 	    where $(x)_2$ denotes the binary expansion of the number $x$ but with a leading $1$ at the start. 
 	    For example, the binary representation of $0.5$ is $0.01111\dots$ 
 	    but $(0.5)_2 = 1.011\dots$. This has been done to preserve the information about leading 0's right after the decimal. 
