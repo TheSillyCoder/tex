@@ -75,6 +75,8 @@
     Hence, $f$ is injective. Let $y \in \rn$ be arbitrary. Then let us define $x := e^y \in (0, \infty)$. Then, $\ln(x) = \ln(e^y) = y$. Hence, $f$ is surjective. Thus, $f$ is a bijection. This proves our claim. Since $f$ is a bijection, the sets $(0, \infty)$ and $\rn$ are equipotent. \qed
     \item Prove that if $A$ and $B$ are countable then $A \times B$ is countable. In general for every $n \in \nn$ if $A_1, A_2, \dots , A_n$ are countable then $A_1 \times A_2 \times \dots \times A_n$ is countable.
     \item Prove or disprove that $A_1 \times A_2 \times \dots$ is countable, where $A_i$ is a countable set.
+
+	    \textbf{Hint : }This set will be uncountable (if each $A_i$ has atleast 2  elements). Use Cantor's diagonal argument. (See Problem 13) 
     \item Prove or disprove that countable union of countable sets in countable.
     \item Prove that the set $A = \{ a \in \rn : \exists a^4 + pa^3 + qa^2 + ra + s = 0 \}$ is countable.
     
@@ -159,7 +161,7 @@
     $x \in B \Rightarrow x \in S_1 \cap B \text{ and } x \notin S_2 \cap B$
     Hence, $\{a : a \in S_1 \cap B \} \neq \{ b : b \in S_2 \cap B \} \Rightarrow f(S_1) \neq f(S_2)$
 
-    Hence, $f$ is injective. Now, let $(S_A, S_B) \in \p(A) \times \p(B)$ be arbitrary. Tthen, $S_A \subseteq A$ and $S_B \subseteq B$.
+    Hence, $f$ is injective. Now, let $(S_A, S_B) \in \p(A) \times \p(B)$ be arbitrary. Then, $S_A \subseteq A$ and $S_B \subseteq B$.
     Let $S = S_A \cup S_B$. Then, $S \cap A = S_A \cup S_B \cap A = S_A \cup \phi = S_A (\text{ since } A \cap B = \phi)$. Similarly $S \cap B = S_B$.
     Then, 
     \begin{align*}
@@ -210,8 +212,21 @@
     \item Suppose that $A \subseteq B$ then prove that 
     \begin{enumerate}
         \item $B$ is finite $\implies$ $A$ is finite.
+
+		\textbf{Solution : }We shall prove this using induction on the number of elements in B.
+		When the number of elements in $B$ is 1, The two subsets are $\phi$ and $B$ which are trivially finite. This is our base case. 
+		
+		Now, let's assume any subset of a set containing $n$ elements is finite. Let the set $B$ have $n + 1$ elements.
+		Then, let $A \subseteq B$. If $A = B$, then $A$ is trivially finite since $B$ is finite. If $A \neq B$, then 
+		$\exists x \in B \text{ such that } x \notin A$. Then, $A \subseteq B\setminus\{x\}$. The set $B\setminus \{x\}$ has 
+		$n$ elements and hence, $A$ is again countable. Thus the statement is true for $n + 1$ whenever it's true for $n$. By the principle of
+		mathematical induction, the statement holds true $\forall n \in \nn$.\qed
         \item $A$ is infinite $\implies$ $B$ is infinite.
+
         \item $B$ is countable $\implies$ $A$ is countable.
+
+		\textbf{Hint :}First show that any subset of $\nn$ is countable. Then, use that fact to prove the given problem by 
+		finding a bijection between a subset of $\nn$ and $A$.
         \item $A$ is uncountable $\implies$ $B$ is uncountable.
     \end{enumerate}
     \item Suppose $f : A \to B$ is injective then prove that 
@@ -221,6 +236,8 @@
         \item $B$ is countable $\implies$ $A$ is countable.
         \item $A$ is uncountable $\implies$ $B$ is uncountable.
     \end{enumerate}
+    \textbf{Hint : }Since $f$ is injective, observe the function $h: A \to f(A)$ defined as $h(x) = f(x) \,\,\, \forall x \in A$ is a bijection.
+    Hence, $A \sim f(A) \subseteq B$. Now, use the results from Problem 21 on $f(A)$ and $B$.
     \item Suppose $f : A \to B$ is surjective then prove that 
     \begin{enumerate}
         \item $A$ is finite $\implies$ $B$ is finite.
@@ -228,9 +245,24 @@
         \item $A$ is countable $\implies$ $B$ is countable.
         \item $B$ is uncountable $\implies$ $A$ is uncountable.
     \end{enumerate}
+    \textbf{Hint : }Consider the function $F : B \to A$ defined as,
+    $$F(y) = \min \{x : f(x) = y \}$$ 
+    $F$ can be shown to be a injection, since $f$ is a function. Then, use the results in Problem 22.
     \item Show that the sets $[0, 1]$ and $(0, 1)$ are equipotent.
     
-    \textbf{Solution : }Let us define $f : (0, 1) \to (0, 1]$, $g : [0, 1) \to [0, 1]$ and $h: (0,1] \to [0, 1)$ as, 
+	    \textbf{Solution : } Let us define a function $f : [0, 1] \to (0, 1)$ as,
+	    \begin{equation*}
+		    f(x)=
+		    \begin{cases}
+			    \frac{1}{2} & \text{ if }x = 0 \\
+			    \frac{1}{n + 2} & \text{ if } \exists n \in \nn \text{ such that } x = \frac{1}{n} \\
+			    x & \text{ otherwise }
+		    \end{cases}
+	    \end{equation*}
+	    $f$ can be shown to a bijection (see the proof in the alternate solution for hints). Hence, 
+	    $[0, 1] \sim (0, 1)$
+
+	    \textbf{Alternate Solution : }Let us define $f : (0, 1) \to (0, 1]$, $g : [0, 1) \to [0, 1]$ and $h: (0,1] \to [0, 1)$ as, 
     \begin{equation*}
         f(x) = 
         \begin{cases}
@@ -280,23 +312,25 @@
     Similarly, $g$ can be shown to be a bijection. Also, $h$ is clearly a bijection And thus, the function $F : (0, 1) \to [0, 1]$ defined as, $$F(x) = g\circ h\circ f(x) \, \, \, \forall x \in (0,1)$$ is a bijection. Hence, $(0,1) \sim [0, 1]$ \qed
     \item Show that the sets $[0, 1]$ and $\p(\nn)$ are equipotent.
 
-	    \textbf{Solution : }Consider the function $f:\p(\nn) \to [0,1]$ defined as,
-	    $$f(S) = \sum_{n \in S} 2^{-n} \,\,\, \forall S \in \p(\nn)$$
-	    Since the binary representation of every real number is unique, 
-	    $f$ can be shown to be a bijection. Hence, $[0,1] \sim \p(\nn)$. \qed
+	    \textbf{Solution : }Consider the function $f : \p(\nn) \to [0,1]$ deifned as, 
+	    $$f(S) = \sum_{n\in S} 10^{-n} \,\,\, \forall S \in \p(\nn)$$ It can be shown that $f$ is injective. 
+	    Consider the function $g: [0, 1] \to \p(\nn)$ defined as, 
+	    \begin{align*}
+	    g(x) = \{\left \lfloor 10^n(x)_2 \right \rfloor : n \in \nn \} 
+	    \end{align*}
+	    where $(x)_2$ denotes the binary expansion of the number $x$. For numbers with non-unique decimal expansions (i.e. the numbers of the form
+	    $\frac{a}{2^k}$ where $a \in \z$ and $k \in \nn$),
+	    we choose the representation that ends in infinte 0's. 
+	    Since the binary expansion of the numbers is unique, $g$ is also an injection. 
 
-	    % \textbf{Alternate Solution : }Consider the function $f : \p(\nn) \to [0,1]$ deifned as, 
-	    % $$f(S) = \sum_{n\in S} 10^{-n} \,\,\, \forall S \in \p(\nn)$$ It can be shown that $f$ is injective. 
-	    % Consider the function $g: [0, 1] \to \p(\nn)$ defined as, 
-	    % \begin{align*}
-	    % g(x) = \{\left \lfloor 10^n(x)_2 \right \rfloor : n \in \nn \} \tag{hehehehe} 
-	    % \end{align*}
-	    % where $(x)_2$ denotes the binary expansion of the number $x$.
-	    % Since the binary expansion of every real number is unique, $g$ is also an injection. 
-
-	    % Since both $f: \p(\nn) \to [0,1]$ and $g: [0,1] \to \p(\nn)$ are injective, by Schröder–Bernstein theorem, it is possible to find
-	    % a bijection from $[0, 1] \to \p(\nn)$. Hence, $[0, 1] \sim \p(\nn)$ \qed
+	    Since both $f: \p(\nn) \to [0,1]$ and $g: [0,1] \to \p(\nn)$ are injective, by Schröder–Bernstein theorem, it is possible to find
+	    a bijection from $[0, 1] \to \p(\nn)$. Hence, $[0, 1] \sim \p(\nn)$ \qed
 	    
+	    % \textbf{Alternate Solution : }Consider the function $f:\p(\nn) \to [0,1]$ defined as,
+	    % $$f(S) = \sum_{n \in S} 2^{-n} \,\,\, \forall S \in \p(\nn)$$
+	    % Since the binary representation of every real number is unique, 
+	    % $f$ can be shown to be a bijection. Hence, $[0,1] \sim \p(\nn)$. \qed
+
     \item Are the sets $\p(\rn)$ and $\p(\nn)$ equipotent? Give justification. 
 
     \textbf{Solution : }We know from questions 24 and 25, $\p(\nn) \sim [0, 1] \sim (0, 1)$.
