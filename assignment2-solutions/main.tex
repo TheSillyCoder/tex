@@ -311,7 +311,7 @@
     
     Similarly, $g$ can be shown to be a bijection. Also, $h$ is clearly a bijection And thus, the function $F : (0, 1) \to [0, 1]$ defined as, $$F(x) = g\circ h\circ f(x) \, \, \, \forall x \in (0,1)$$ is a bijection. Hence, $(0,1) \sim [0, 1]$ \qed
     
-    \textbf{Alternate Solution : }The set $[0, 1]$ can be written as $(0, 1) \cup \{0, 1 \}$. Since $(0, 1)$ is infinite and $\{0, 1\}$ finite and countable, $(0, 1) \sim (0, 1) \cup \{0, 1\}\Rightarrow (0, 1) \sim [0, 1]$. \qed
+    \textbf{Alternate Solution : }The set $[0, 1]$ can be written as $(0, 1) \cup \{0, 1 \}$. Since $(0, 1)$ is infinite and $\{0, 1\}$ is finite and countable, $(0, 1) \sim (0, 1) \cup \{0, 1\}\Rightarrow (0, 1) \sim [0, 1]$. \qed
     \item Show that the sets $[0, 1]$ and $\p(\nn)$ are equipotent.
 
 	    \textbf{Solution : }Consider the function $f : \p(\nn) \to [0,1]$ deifned as, 
@@ -320,9 +320,12 @@
 	    \begin{align*}
 	    g(x) = \{\left \lfloor 10^n(x)_2 \right \rfloor : n \in \nn \} 
 	    \end{align*}
-	    where $(x)_2$ denotes the binary expansion of the number $x$. For numbers with non-unique decimal expansions (i.e. the numbers of the form
-	    $\frac{a}{2^k}$ where $a \in \z$ and $k \in \nn$),
-	    we choose the representation that ends in infinte 0's. 
+	    where $(x)_2$ denotes the binary expansion of the number $x$ but with a leading $1$ at the start. 
+	    For example, the binary representation of $0.5$ is $0.01111\dots$ 
+	    but $(0.5)_2 = 1.011\dots$. This has been done to preserve the information about leading 0's right after the decimal. 
+	    For numbers with non-unique decimal expansions (i.e. the numbers of the form $\frac{a}{2^k}$ where $a \in \z$ and $k \in \nn$ 
+	    for example, $0.5$ has two binary expansions $0.10000\dots$ and $0.0111\dots$),
+	    we choose the representation that ends in infinte 1's. 
 	    Since the binary expansion of the numbers is unique, $g$ is also an injection. 
 
 	    Since both $f: \p(\nn) \to [0,1]$ and $g: [0,1] \to \p(\nn)$ are injective, by Schröder–Bernstein theorem, it is possible to find
