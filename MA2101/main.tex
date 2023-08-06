@@ -1,0 +1,50 @@
+\documentclass[10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+% \usepackage{enumitem}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+% \usepackage[hidelinks]{hyperref}
+
+\newcommand{\nn}{\mathbb{N}}
+\newcommand{\rn}{\mathbb{R}}
+\newcommand{\q}{\mathbb{Q}}
+\newcommand{\p}{\mathcal{P}}
+\newcommand{\z}{\mathbb{Z}}
+\title{MA2101 - Homework Solutions}
+\author{Debayan Sarkar, \texttt{22MS002}}
+\date{\today}
+
+\geometry{a4paper, margin=0.8in}
+\setlength{\parindent}{0pt}
+\begin{document}
+\maketitle
+Prove the following
+\begin{enumerate}
+	\item For $x<y$, we have, $x<\frac{x+y}{2}<y$
+
+		\textbf{Solution : }Since $x < y$, we have $\frac{x}{2} < \frac{y}{2}$. Then, we have $\frac{x}{2} + \frac{x}{2} < \frac{y}{2} + \frac{x}{2} \Rightarrow x < \frac{x + y}{2}$
+		Similarly, we have $\frac{x}{2} + \frac{y}{2} < \frac{y}{2} + \frac{y}{2}\Rightarrow \frac{x + y}{2} < y$
+		Hence, $x < \frac{x + y}{2} < y$ \qed
+	\item If $x \leq y + z$ for all $z > 0$, then $x \leq y$.
+
+		\textbf{Solution : } Let $x,y \in \rn$ such that $x \leq y + z$ for all $z > 0$. We claim that, $x \leq y$. Let us assume to the contrary that, $x > y$. Then, we have $x - y > 0$. Let $\epsilon := x - y$. Also observe that, $x-y \leq z$ for all $z > 0$. Let us set $z = \frac{\epsilon}{2}$. Then, $x - y \leq z \Rightarrow \epsilon \leq \frac{\epsilon}{2} \Rightarrow 1 \leq \frac{1}{2}$. This is a contradiction. Hence, $x \leq y$. This proves our claim. \qed
+	\item For $0 < x < y$, we have $0<x^2<y^2$ and $0<\sqrt{2}<\sqrt{y}$, assuming te existence of $\sqrt{x}$ and $\sqrt{y}$. More generally, if $x$ and $y$ are positive, then $x < y \text{ iff } x^n < y^n$ for all $n \in \nn$.
+		
+		\textbf{Solution : }Done. Shall type it later.
+	\item For $0 < x < y$, we have $\sqrt{xy} < \frac{x + y}{2}$.
+
+		\textbf{Solutions : }We claim that the statment is true. Let us assume to the contrary that, $\frac{x + y}{2} < \sqrt{xy}$. Then, we have, 
+		\begin{align*}
+			&\frac{x + y}{2} < \sqrt{xy} \\
+			\Rightarrow &\left(\frac{x + y}{2}\right)^2 < xy \tag{Using the result from Problem 2}\\
+			\Rightarrow &\left(\frac{x + y}{2}\right)^2 - xy < 0 \\
+			\Rightarrow &\left(\frac{x - y}{2}\right)^2 < 0 \\
+		\end{align*}
+		This is a contradiction since we know that $\alpha^2 \geq 0 \,\,\, \forall \alpha \in \rn$. This proves our claim. \qed
+\end{enumerate}
+\end{document}
