@@ -1,16 +1,65 @@
 \documentclass{scrartcl}
-\usepackage{amsmath,amsfonts}
+\usepackage{amsmath,amsfonts, amssymb}
+\usepackage{amsthm}
+\usepackage[english]{babel}
+\usepackage{enumitem}
 \begin{document}
-\title{MA2101: Analysis Lecture Notes}
-    \author{Sabarno Saha \\ \texttt{22MS037}\and Debayan Sarkar \\ \texttt{22MS002}}
-    \date{\today}
-    \maketitle
-    \section{Algebra of the Real Number System}
-    The properties of addition in the real number system are:
-    \begin{enumerate}
-        \item[(A1)] $x+y=y+x\; \forall \; x,y \in \mathbb{R}$
-        \item[(A2)] $(x+y)+z = x+(y+z) \; \forall \; x,y,z \in \mathbb{R}$
-        \item[(A3)] $ \exists !0 \in \mathbb{R} \; s.t.\; x+0 =0+x =x \; \forall \; x\in \mathbb{R}$
 
+\newcommand{\rn}{\mathbb{R}}
+\newtheorem{remark}{Remark}
+
+\title{MA2101: Analysis I Lecture Notes}
+\subtitle{Instructor: Rajib Dutta}
+\author{Sabarno Saha \\ \texttt{22MS037}\and Debayan Sarkar \\ \texttt{22MS002}}
+\date{August 13, 2023}
+    \maketitle
+    % \tableofcontents
+    \section{Algebra of the Real Number System}
+    \subsection{Properties of Addition}
+    The properties of addition(+) in the real number system are:
+    \begin{enumerate}[label={(A\arabic*})]
+        \item $x+y=y+x\; \forall \; x,y \in \mathbb{R}$
+        \item $(x+y)+z = x+(y+z) \; \forall \; x,y,z \in \mathbb{R}$
+        \item $ \exists !0 \in \mathbb{R} \; s.t.\; x+0 =0+x =x \; \forall \; x\in \mathbb{R}$
+        \item $ \forall x \in \rn \exists! y \in \rn \text{ s.t. } x + y = y + x = 0$
     \end{enumerate}
+    \subsection{Properties of Multiplication}
+    The properties of multiplication($\cdot$) in the real number system are:
+    \begin{enumerate}[label={(M\arabic*)}]
+        \item $x\cdot y = y\cdot x \forall x, y \in \rn$ 
+        \item $(x \cdot y)\cdot z = x\cdot (y \cdot z) \forall x, y, z \in \rn$
+        \item $\exists ! 1 \in \rn \text{ s.t. } x \cdot 1 = x \forall x \in \rn$
+        \item $\forall x\in \rn \setminus \{0\} \exists ! y \in \rn \text{ s.t. } x\cdot y = y \cdot x = 0$
+    \end{enumerate}
+    \subsection{Distributive Property}
+    The multiplication operator distributes over addition inn real numbers.
+    $$x \cdot (y + z) = x \cdot y + x \cdot z$$
+    Since addition and multiplication have these properties in real numbers, $(\rn, +, \cdot)$ is a Field.
+    \subsection{Order in Reals}
+    \subsubsection{Law of Trichotomy}
+    Given two $x, y \in \rn$, exaclt one of the following statements is true :
+    \begin{enumerate}[label={(\roman*)}]
+        \item $x = y$
+        \item $x > y$
+        \item $x < y$
+    \end{enumerate}
+    \subsubsection{Properties of "$<$"}
+    \begin{enumerate}[label={(\roman*)}]
+        \item If $x < y$ and $y < z$ then $x < z$
+        \item If $x > 0$, $y>0$ then, $xy >0$
+        \item If $x < y$ then, $x + z < y +z$ $\forall z \in \rn$
+        \item $x < y \Rightarrow -x > -y$
+        \item If $x < y \text{ and } z > 0 \text{ then } xz < yz$
+        \item If $0<x<y$, then $0<\frac{1}{y}<\frac{1}{x}$
+        \item $x^2 \geq 0 \forall x \in \rn$
+    \end{enumerate}
+    \begin{remark}
+        Let $x, y \in \rn$ such that, $x \leq y$ and $y \leq x$. Then, $x=y$. 
+        \begin{proof}
+            Let's assume to teh contrary that $x \neq y$. Then, by the law of trichotomy, either $x < y$ or $y < x$.
+            Let $y < x$. From $x \leq y$ we have either $x < y$ or $x = y$. By the law of trichotomy, neither of them can be true. Hence, $y \nless x$
+            Now, let $x < y$. From $y \leq x$ we have either $y < x$ or $y = x$. Again, by the law of trichotomy, neither of them can be true. Hence, $x \nless y$
+            This is a contradiction. Hence, $x = y$
+        \end{proof}
+    \end{remark}
 \end{document}
