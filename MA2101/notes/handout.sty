@@ -1,0 +1,373 @@
+\ProvidesPackage{handout}
+% ------------------------------------------------------------------------------------------------- %
+
+%% SOME MORE USEFUL PACKAGES %%
+\usepackage[utf8]{inputenc}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{paralist}
+\usepackage[shortlabels]{enumitem}
+\usepackage{float}
+% \usepackage{graphicx, svg}
+%% COLOUR FULL WORLD %%
+\usepackage[usenames, dvipsnames, svgnames, table, x11names]{xcolor}
+\usepackage{color}
+%% REFERENCE SETUP %%
+\usepackage[colorlinks=true]{hyperref}
+\hypersetup{urlcolor=RubineRed,linkcolor=RoyalBlue,citecolor=ForestGreen}
+\newcommand{\mailto}[1]{\href{mailto:#1}{\texttt{#1}}}
+\newcommand{\ie}{\textit{i.e. }}
+\newcommand{\eg}{\textit{E.g.}}
+\newcommand{\eqn}{eq\textsuperscript{n} }
+% ------------------------------------------------------------------------------------------------- %
+
+%% USEFUL VARIABLES %%
+\providecommand{\thetitle}{\@title}
+\providecommand{\thesubtitle}{\@subtitle}
+\providecommand{\theauthor}{\@author}
+\providecommand{\thedate}{\@date}
+% ------------------------------------------------------------------------------------------------- %
+
+%%%% DOCUMENT STRUCTURE %%%%% --------------------------------------------------------------------- %
+%% BASIC PARAMETERS OF DOCUMENTS %%
+\setlength{\headheight}{1in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\voffset}{-1.0in}
+\setlength{\headsep}{10pt}
+% \setlength{\textwidth}{6.8in}
+% \setlength{\textheight}{10.9in}
+\setlength{\parskip}{1.25ex}
+\setlength{\footskip}{0.5in}
+% \setlength{\margin}{0.2in}
+
+\usepackage[a4paper,left = 0.75in, right = 0.75in, bottom = 0.01in]{geometry}
+% \usepackage[a4paper, margin = 0.8in]{geometry}
+%% FANCY HEADER & FOOTER %%
+\@ifundefined{KOMAClassName}{%
+    \usepackage{extramarks}
+    \usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \renewcommand{\headrulewidth}{0.5pt}
+    \renewcommand{\footrulewidth}{0.0pt}
+    \lhead{\footnotesize\textbf{\theauthor}}
+    \chead{}
+    \rhead{\footnotesize\textbf{\thetitle}}
+    \cfoot{\pagemark}
+}{%
+    % \usepackage[headsepline]{scrlayer-scrpage}
+    \usepackage{scrlayer-scrpage}
+    \renewcommand{\headfont}{}
+    % \ihead{\footnotesize\textbf{\theauthor}} %% Uncomment if u want author name only
+    % \ihead{\textbf{Piyush Kumar Singh}}
+    % \automark{section}
+    % \chead{}
+    % \ohead{\footnotesize\textbf{\thetitle}}
+    % \ohead{\leftmark}
+    \cfoot{\pagemark}
+}
+% ------------------------------------------------------------------------------------------------- %
+
+%%%% BEAUTY FORMATTING %%%% ----------------------------------------------------------------------- %
+\@ifundefined{chapter}{}{
+    \addtokomafont{partprefix}{\rmfamily}
+    \renewcommand*{\partformat}{\color{purple}\scalebox{2.5}{\thepart}\enlargethispage{2em}}
+    \addtokomafont{chapterprefix}{\raggedleft}
+    \RedeclareSectionCommand[beforeskip=0.5em]{chapter}
+    \renewcommand*{\chapterformat}{\mbox{\scalebox{1.5}{\chapappifchapterprefix{\nobreakspace}}\scalebox{2.718}{\color{purple}\thechapter}\enskip}}
+}
+\renewcommand*{\sectionformat}{\color{purple}\S\thesection\enskip}
+\renewcommand*{\subsectionformat}{\color{purple}\S\thesubsection\enskip}
+\renewcommand*{\subsubsectionformat}{\color{purple}\S\thesubsubsection\enskip}
+
+%% CAPTION FORMATTING %%
+\usepackage{caption}
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\figureautorefname}{Fig.}
+\renewcommand{\equationautorefname}{Eq\textsuperscript{n}}
+\DeclareCaptionStyle{sexy}[justification=centering,indention=0pt]{font={small},labelfont={bf},width=0.7\textwidth}
+\captionsetup[figure]{style=sexy}
+% ------------------------------------------------------------------------------------------------- %
+
+%%% COMMAND FOR HIGHLIGHTING SOME TEXT %%% -------------------------------------------------------- %
+\newcommand{\vocab}[1]{\texttt{\textcolor{red}{#1}}}
+\newcommand{\note}[1]{\textcolor{Navy}{\textbf{\emph{Note: }}#1}}
+
+%%%% MATHS PACKAGE & COMMANDS %%%% ---------------------------------------------------------------- %
+\usepackage{amsmath, amssymb, amsthm, amsfonts, mathtools, thmtools, bm, mathrsfs}
+\usepackage[arrowdel]{physics}
+
+\everymath{\displaystyle}
+
+% \renewcommand*{\theequation}{\arabic{section}.\arabic{equation}}
+
+\newcommand{\half}{\frac{1}{2}}
+\newcommand{\sq}{^2}
+\newcommand{\dg}{^\circ}
+\newcommand{\naut}{_\circ}
+\newcommand{\inv}{^{-1}}
+\newcommand{\cbrt}[1]{\sqrt[3]{#1}}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+% ------------------------------------------------------------------------------------------------- %
+
+% ------------------------------------------------------------------------------------------------- %
+%%%% COLORED BOXES %%%% --------------------------------------------------------------------------- %
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+%% CONCEPT BOX %%
+\mdfdefinestyle{mdbluebox}
+{
+    roundcorner = 10pt,
+    linewidth=1pt,
+    skipabove=12pt,
+    innerbottommargin=9pt,
+    skipbelow=2pt,
+    linecolor=blue,
+    nobreak=true,
+    backgroundcolor=TealBlue!5,
+    frametitlealignment=\centering,
+}
+\declaretheoremstyle[
+    headfont=\sffamily\bfseries\color{MidnightBlue},
+    mdframed={style=mdbluebox},
+    spaceabove=0pt,
+    spacebelow=0pt,
+    headpunct={\\[3pt]},
+    postheadspace={0pt}
+]{thmbluebox}
+% \declaretheorem[style=thmbluebox,name=Concept,numberwithin=section]{concept}
+% \declaretheorem[style=thmbluebox,name=Concept,numbered=no]{concept*}
+
+% ------------------------------------------------------------------------------------------------- %
+
+%% THEOREM BOX %%
+\declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{theorem}
+\declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
+% ------------------------------------------------------------------------------------------------- %
+
+%% DEFINITION BOX %%
+\declaretheorem[style=thmbluebox,name=Definition]{definition}
+\declaretheorem[style=thmbluebox,name=Definition,numbered=no]{definition*}
+% ------------------------------------------------------------------------------------------------- %
+
+%% AXIOM BOX %%
+\declaretheoremstyle[
+    bodyfont = \normalfont,
+    headfont=\sffamily\bfseries
+]{normthm}
+\declaretheorem[style = normthm, name = Axiom]{axiom}
+% ------------------------------------------------------------------------------------------------- %
+
+%% LAW BOX %%
+\newtcolorbox[auto counter, number within=section]{law}[2][]{
+    % attach boxed title to top left={xshift=-4mm,yshift=-0.5mm},
+    boxrule=1pt,
+    titlerule=0.3pt,
+    breakable,
+    colback=TealBlue!5,
+    colframe=MidnightBlue,
+    colbacktitle=TealBlue!5,
+    coltitle=MidnightBlue,
+    fonttitle=\bfseries\sffamily,
+    title={#2},
+    label={law:#1},
+    nameref={#2},
+    halign title=center,
+    arc=10pt,
+}
+\newmdenv[
+    roundcorner = 10pt,
+    linewidth=1pt,
+    % skipabove=12pt,
+    innerbottommargin=9pt,
+    % skipbelow=2pt,
+    linecolor=blue,
+    nobreak=true,
+    backgroundcolor=TealBlue!5,
+]{law*}
+
+% \newtcolorbox{law*}{
+%     % attach boxed title to top left={xshift=-4mm,yshift=-0.5mm},
+%     boxrule=1pt,
+%     titlerule=0.3pt,
+%     breakable,
+%     colback=TealBlue!5,
+%     colframe=MidnightBlue,
+%     colbacktitle=TealBlue!5,
+%     coltitle=MidnightBlue,
+%     fonttitle=\bfseries\sffamily,
+%     halign title=center,
+%     arc=10pt,
+% }
+% ------------------------------------------------------------------------------------------------- %
+
+%% REMARK BOX %%
+\mdfdefinestyle{mdgreenbox}
+{
+    skipabove=8pt,
+    linewidth=3pt,
+    rightline=false,
+    leftline=true,
+    topline=false,
+    bottomline=false,
+    linecolor=ForestGreen,
+    backgroundcolor=ForestGreen!10,
+}
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{ForestGreen!70!black} ,
+    bodyfont=\normalfont,
+    spaceabove=0pt,
+    spacebelow=0pt,
+    mdframed={style=mdgreenbox},
+    headpunct={\\[3pt]},
+]{thmgreenbox}
+\declaretheorem[style=thmgreenbox,name=Remark,numberwithin = section]{remark}
+\declaretheorem[style=thmgreenbox,name=Remark,numbered=no]{remark*}
+
+% \declaretheorem[style=thmgreenbox,name=Lemma,numberwithin = section]{lemma}
+% \declaretheorem[style=thmgreenbox,name=Lemma,numbered=no]{lemma*}
+
+% ------------------------------------------------------------------------------------------------- %
+
+%% EXAMPLE BOX %%
+\mdfdefinestyle{mdredbox}
+{%	
+    frametitleaboveskip=5pt,
+    frametitlebelowskip=0pt,
+    skipbelow=2pt,
+    frametitlefont=\bfseries,
+    innertopmargin=4pt,
+    innerbottommargin=4pt,
+    nobreak=true,
+    backgroundcolor=Salmon!5,
+    linecolor=RawSienna,
+    linewidth = 1.5pt,
+}
+\declaretheoremstyle[
+    headfont=\bfseries\color{RawSienna},
+    bodyfont = \itshape,
+    mdframed={style=mdredbox},
+    headpunct={:\\[1pt] },
+    postheadspace={0pt},
+]{thmredbox}
+\declaretheorem[style=thmredbox,name=Example]{example}
+\declaretheorem[style=thmredbox,name=Example, numbered=no]{example*}
+
+% ------------------------------------------------------------------------------------------------- %
+
+%% QUESTION BOX %%
+\mdfdefinestyle{mdblackbox}
+{
+    skipabove = 5pt,
+    linewidth = 3pt,
+    rightline = false,
+    leftline = true,
+    topline = false,
+    bottomline = false,
+    linecolor = black,
+    backgroundcolor = black!10
+}
+\declaretheoremstyle[
+    headfont = \bfseries\sffamily,
+    bodyfont = \normalfont,
+    mdframed = {style = mdblackbox},
+    headpunct = {:\\[1pt] },
+    postheadspace = {0pt}
+]{quesbox}
+\declaretheorem[style = quesbox, name = Exercise, sibling = example]{exercise}
+\declaretheorem[style = quesbox, name = Exercise, numbered = no]{exercise*}
+
+% \declaretheorem[style = quesbox, name=Concept,numberwithin=section]{concept}
+% \declaretheorem[style = quesbox, name=Concept,numbered=no]{concept*}
+% ------------------------------------------------------------------------------------------------- %
+
+%% SOLUTION BOX %%
+\declaretheoremstyle[
+    headfont=\sffamily\bfseries,
+    bodyfont=\normalfont,
+    headpunct={.\\},
+    postheadspace={0pt},
+    spaceabove=0pt,
+    spacebelow=0pt,
+    qed=\footnotesize$\blacktriangleleft$
+]{solnbox}
+\declaretheorem[style=solnbox,name=Solution]{solution}
+\declaretheorem[style=solnbox,name=Solution, numbered=no]{solution*}
+
+\declaretheoremstyle[
+    headfont=\sffamily\bfseries,
+    bodyfont=\normalfont,
+    headpunct={:\\},
+    postheadspace={0pt},
+    qed=\scriptsize{\texttt{Q.E.D.}}
+]{proofbox}
+\let\proof\@undefined
+\declaretheorem[style=proofbox,name=Proof, sibling = solution]{proof}
+\declaretheorem[style=proofbox,name=Proof, numbered=no]{proof*}
+
+
+\declaretheoremstyle[
+    headfont=\sffamily\bfseries,
+    bodyfont=\normalfont,
+    headpunct={:}
+]{claimbox}
+\declaretheorem[style=claimbox, name=Claim, numberwithin=solution]{claim}
+\declaretheorem[style=claimbox, name=Claim, numbered=no]{claim*}
+
+\declaretheorem[style=claimbox, name=Lemma, numberwithin=solution]{lemma}
+\declaretheorem[style=claimbox, name=Lemma, numbered=no]{lemma*}
+
+\declaretheoremstyle[
+    headfont=\sffamily\bfseries\small,
+    bodyfont=\small\normalfont,
+    headpunct={:}
+]{corollarybox}
+\declaretheorem[style=corollarybox, name=Corollary, numberwithin=lemma]{corollary}
+\declaretheorem[style=corollarybox, name=Corollary, numbered=no]{corollary*}
+
+\declaretheorem[style=claimbox, name=Proposition, sibling=lemma]{proposition}
+\declaretheorem[style=claimbox, name=Proposition, numbered=no]{proposition*}
+% ------------------------------------------------------------------------------------------------- %
+
+% ------------------------------------------------------------------------------------------------- %
+%%%% QUESTION REPRESENTATION %%%% ----------------------------------------------------------------- &
+%% PROBLEM ENVIRONMENT %%
+\newenvironment{problem}[1]{
+    \begin{enumerate}[label = \textbf{Ex \arabic*.}, ref = Exercise \arabic* , series = #1]
+        }
+        {
+    \end{enumerate}
+}
+%% RESUMING PROBLEM ENVIRONMENT %%
+\newenvironment{problem*}[1]{
+    \begin{enumerate}[label = \textbf{Ex \arabic*.}, ref = Exercise \arabic*, resume* = #1]
+        }
+        {
+    \end{enumerate}
+}
+% ------------------------------------------------------------------------------------------------- %
+
+%% PART OF PROBLEM ENVIRONMENT %%
+\renewenvironment{part}{
+    \begin{enumerate}[label = \alph*), ref = Problem \arabic{enumi}.\alph*]
+        }
+        {
+    \end{enumerate}
+}
+% ------------------------------------------------------------------------------------------------- 
+
+%% HOTS ENVIRONMENT %%
+\newenvironment{hots}{
+    \begin{enumerate}[label = \textbf{HOTS \arabic*:}, ref = HOTS \arabic*]
+        }
+        {
+    \end{enumerate}
+}
+% ------------------------------------------------------------------------------------------------- %
+% ------------------------------------------------------------------------------------------------- %
