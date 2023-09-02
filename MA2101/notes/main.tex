@@ -20,7 +20,7 @@
             \thanks{{\href{https://thesillycoder.github.io}{TheSillyCoder.github.io}}}
             \\\href{mailto:ds22ms002@iiserkol.ac.in}{22MS002} \and
         Sabarno Saha
-        % \thanks{{}}
+        \thanks{{\href{https://theinvisiblefoe.github.io}{TheInvisibleFoe.github.io}}}
         \\\href{mailto:ss22ms037@iiserkol.ac.in}{22MS037} \and
         Piyush Kumar Singh
             \thanks{{\href{https://iampiyushkrsingh.github.io}{iamPiyushKrSingh.github.io}}}
@@ -214,5 +214,40 @@
     \begin{theorem}[Greatest Integer Function]
         Let $x \in \rn$. Then, $\exists$ a unique $m \in \z$ s.t. $m \leq x < m+1$
         This $m$ is denoted as $\floor{x}$. We define the \textbf{greatest integer function} $f : \rn \to \z$ as, $f(x) = \floor{x}$
+    \end{theorem}
+    \begin{proof*}
+        Let $S:=\{k \in \mathbb{Z} : k \leq x\}$. 
+        S is bounded above as $x$ is an upper bound from set definition. We now aim to show that $S$ is non-empty.
+        Let us suppose to the contrary that S is empty then we have 
+        $\forall ~~~ k\in \mathbb{Z}, ~~ k>x$.  
+        Thus $k$ is a lower bound of $\mathbb{Z}$ which is a constradiction. Thus S is non empty.
+        We know $S$ is bounded above and non-empty. Then by the completeness axiom, there exists a least upper bound.
+        Let $m = \sup(S)$. We now show that $m\leq x < m+1$. Clearly $m \leq x$ as $x$ is any upper bound for $S$. For proving the right inequality we use contradiction. 
+        Let us suppose to the contrary that $x\geq m+1$. Since $m\in \mathbb{Z}$, then $m+1\in \mathbb{Z}$. Thus $m+1\in S$. Thus we have $m+1 = \sup(S)$, which is a contradiction.
+    \end{proof*}
+    \begin{claim*}
+        $m$ is unique. 
+        \begin{proof*}
+            Suppose we have $m \neq n$ and $m = \floor{x}=n$.
+            WLOG $n>m$. 
+            we have,$m \leq x < m+1 $ and $n\leq x < m+1$.
+            Since $n>m$ and $n,m \in \mathbb{Z}$, then $n \geq m+1$.  
+            Now $m \leq x <m+1 \leq n ~~\Rightarrow x<n$   
+            which is a contradiction of the law of trichotomy of order as we assumed $x\geq n$. 
+        \end{proof*}
+    \end{claim*}
+    \begin{theorem}[Density of Rational Numbers]
+        $\forall ~~ a,b,\in \mathbb{R}$ and $a<b$. Then $\exists ~~q\in \mathbb{Q}$ s.t. $a<q<b$.
+    \end{theorem}
+    \begin{proof*}
+        Since $q \in \mathbb{Q}$, we can write $q = \frac{m}{n}$ where $m,n\in\mathbb{Z}~~~,~n\neq=0$.Thus we have $a<\frac{m}{n}<b~~ \Rightarrow na<m<nb$
+        Using the Archimedean Property, we choose $n_0$ s.t. $n_0 > \frac{1}{b-a}$. Now we choose $m = \floor{n_0a+1}$. Thus, we have $n_0a<m\leq n_0a+1$. We thus have
+        $m\leq n_0a+1 $. We know from the AP inequality $n_0(b-a)>1$, we get $m < n_0a+n_0(b-a) =n_0b $. Thus we have $n_0a<m<n_0b$
+    \end{proof*}
+    \begin{definition}[Irrational Numbers]
+        If $\alpha \in \mathbb{R}$ and $\alpha \notin \mathbb{Q}$, we say that $\alpha$ is an irrational number.
+    \end{definition}
+    \begin{theorem}[Density of Irrational Numbers]
+        $\forall ~~ a,b,\in \mathbb{R}$ and $a<b$. Then $\exists ~~\alpha\in \mathbb{R}\backslash\mathbb{Q}$ s.t. $a<\alpha<b$.
     \end{theorem}
 \end{document}
