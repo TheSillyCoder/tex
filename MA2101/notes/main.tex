@@ -133,13 +133,13 @@
     \begin{theorem}
         Let $A$ be a bounded above set. Let $\alpha \in \rn$ be an upper bound. Let $\beta \in \rn$ such that 
         $\beta \geq \alpha$. Then $\beta$ is an upperbound of $A$.
+    \end{theorem}
         \begin{proof*}
             Since $\alpha$ is an upper bound, we have $x \leq \alpha \,\, \forall x \in A$
             But, $\alpha \leq \beta$. Then we have, $x \leq \beta \,\, \forall x \in A$.
             Hence $\beta$ is an upper bound of A.
         \end{proof*}
     A similar theorem can be stated and proved analagously for bounded below sets and lower bounds.
-    \end{theorem}
     \begin{definition}[Maximum]
         Let $\phi \neq A \subset \rn$. $\alpha \in \rn$ is said to be the maximum of $A$ if 
         \begin{enumerate}[label={(\roman*)}]
@@ -150,14 +150,14 @@
     \end{definition}
     \begin{theorem}
         The maximum of a set is unique.
-        \begin{proof*}
-            Let $\alpha$ and $\beta$ be two maxima of $A$ s.t. $\alpha \neq \beta$. Then, by the law of trichotomy,
-            either $\alpha > \beta$ or $\beta > \alpha$. 
-            If $\alpha > \beta$, then $\alpha$ cannot be an upper bound since, $\beta \in A$. And,
-            if $\beta > \alpha$, then $\beta$ cannot be an upper bound since, $\alpha \in A$. This is a contradiction. 
-            Hence, $\alpha = \beta$.
-        \end{proof*}
     \end{theorem}
+    \begin{proof*}
+        Let $\alpha$ and $\beta$ be two maxima of $A$ s.t. $\alpha \neq \beta$. Then, by the law of trichotomy,
+        either $\alpha > \beta$ or $\beta > \alpha$. 
+        If $\alpha > \beta$, then $\alpha$ cannot be an upper bound since, $\beta \in A$. And,
+        if $\beta > \alpha$, then $\beta$ cannot be an upper bound since, $\alpha \in A$. This is a contradiction. 
+        Hence, $\alpha = \beta$.
+    \end{proof*}
     \begin{remark}
         A bounded above set need not have a maximum. Consider set $S : = (0,1)$. $S$ clearly has upper bounds
         for instance $1$, $2$, etc. However it does not have a maximum, since none of the upper bounds are in the set $S$ itself. Some more of such remarks could be
@@ -194,6 +194,7 @@
     \begin{theorem}[Archimedean Property]
         (AP1) $\nn$ is not bounded above in $\rn$ \\
         (AP2) Let $x>0$, $y \in \rn$, then $\exists n \in \nn$ such that $nx > y$
+    \end{theorem}
         \begin{proof*}
             First, we prove AP1 by contradiction. Let us assume to the contrary that $\nn$ is bounded above
             in $\rn$. Then, by the Completeness Axiom, $\exists \alpha \in \rn$ such that $\alpha = \lub \nn$. Then, by definition of lub, 
@@ -207,7 +208,6 @@
 
             The proof for AP2 $\Rightarrow$ AP1 is left as an exercise.
         \end{proof*}
-    \end{theorem}
     \begin{definition}[Bounded Sets]
         Let $A$ be a non-empty subset of $\rn$. Then, $A$ is said to be bounded if $A$ is bounded above and bounded below.
     \end{definition}
