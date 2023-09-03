@@ -250,4 +250,21 @@
     \begin{theorem}[Density of Irrational Numbers]
         $\forall ~~ a,b,\in \mathbb{R}$ and $a<b$. Then $\exists ~~\alpha\in \mathbb{R}\backslash\mathbb{Q}$ s.t. $a<\alpha<b$.
     \end{theorem}
+    \begin{proof*}
+        We know from the previous theorem that $\forall ~~ a,b\in \mathbb{R} ~~\exists q \in \mathbb{Q} ~~s.t.~~ a<q<b$ . Let us have $a=a'-\sqrt{2},b=b'-\sqrt{2}$ where 
+        $a',b' \in \mathbb{R}$. plugging these values into the inequality,we get $a-\sqrt{2}<q<b-\sqrt{2}$. Adding $\sqrt{2}$, we get $a'<q+\sqrt{2}<b'$. we know $q+\sqrt{2}$ is an 
+        irrational number. Let us suppose to the contrary that $q+\sqrt{2}$ is a rational number. We know that $-q\in \mathbb{R}$ thus $q+\sqrt{2}-q\in \mathbb{R}$. Thus we have 
+        $\sqrt{2} \in \mathbb{R}$, which is a contradiction. 
+    \end{proof*}
+    \begin{theorem}
+        Let p be a prime number. Let $x$ be a non negative real s.t. $x^2=p$. Then $x$ is irrational.
+    \end{theorem}
+    \begin{proof*}
+        Suppose $x \in \mathbb{R}$ s.t. $x=\frac{m}{n},~m,n\in \mathbb{Z},n\neq0,\gcd(m,n)=1$. We have $x^2 = \frac{m^2}{n^2}=p$.Thus ,$pn^2=m^2$.Thus $p|m^2$, $m^2\equiv0(\mod p)$. 
+        Since p is a prime number we can cancel m out on both sides, having $m\equiv0(\mod p)$. Thus we have $m=kp$ for some $k\in \mathbb{Z}$.$m^2=k^2p^2=pn^2$, thus $p|n^2$ implying that 
+        $p|n$. Thus we have $p|m$ and $p|n$, which is a contradiction that $gcd\neq1$.
+    \end{proof*}
+    \begin{theorem}[Existence of nth root of positive numbers]
+        Let $n\in\mathbb{N}$ and let $\alpha\in\mathbb{R}^+\cup\{0\}$. Then $\exists!x\geq0$ s.t. $x^n=\alpha$
+    \end{theorem}
 \end{document}
