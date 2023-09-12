@@ -1,0 +1,553 @@
+\documentclass[10pt]{scrartcl}
+
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{fancyhdr}
+\geometry{a4paper, margin=0.8in}
+\pagestyle{fancy}
+\lhead{MA2102 - Assignment 03 Solutions}
+\rhead{Debayan Sarkar \texttt{22MS002}}
+\everymath{\displaystyle}
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}
+\newenvironment{solution} {\begin{proof}[\normalfont \textbf{Solution}]} {\end{proof}}
+\newcommand{\nn}{\mathbb{N}}
+\newcommand{\rn}{\mathbb{R}}
+\newcommand{\q}{\mathbb{Q}}
+\newcommand{\p}{\mathcal{P}}
+\newcommand{\z}{\mathbb{Z}}
+\title{MA2102 - Linear Algebra I}  
+\subtitle{Assignment 3 Solutions}
+\author{Debayan Sarkar \\ \texttt{22MS002}}
+\date{\today}
+
+\geometry{a4paper, margin=1in}
+\setlength{\parindent}{0pt}
+\begin{document}
+\maketitle
+\begin{exercise}
+    Find the dimension of $\text{span}_{\mathbb{R}}S$ where 
+    \begin{gather*}
+        S := \left\{
+        \begin{pmatrix}
+            1 \\
+            1 \\
+            0 
+        \end{pmatrix}
+        ,
+        \begin{pmatrix}
+            0 \\
+            1 \\
+            1 
+        \end{pmatrix}
+        ,
+        \begin{pmatrix}
+            1 \\
+            4 \\
+            3 
+        \end{pmatrix}
+        \right\}
+    \end{gather*}
+\end{exercise}
+\begin{solution}
+    Let $V:= \text{span}_\rn S$. Observe that,
+        \begin{gather*}
+            \begin{pmatrix}
+                1 \\
+                1 \\
+                0 
+            \end{pmatrix}
+            +3
+            \begin{pmatrix}
+                0 \\
+                1 \\
+                1 
+            \end{pmatrix}
+            -
+            \begin{pmatrix}
+                1 \\
+                4 \\
+                3 
+            \end{pmatrix}
+            =
+            \begin{pmatrix}
+                0 \\
+                0 \\
+                0 
+            \end{pmatrix}
+        \end{gather*}
+    Hence, $S$ is not a basis of $V$. We remove 
+    $s_3 : = 
+    \begin{pmatrix}
+        1 \\
+        4 \\
+        3
+    \end{pmatrix}
+    $ from $S$ in an attempt to construct a basis for $V$. Let the new set be $S' = S \setminus \{s_3\}$.
+    We claim that, $S'$ is a linearly independent set. Let $x, y \in \rn$ be such that,
+        \begin{gather*}
+            x
+            \begin{pmatrix}
+                1 \\
+                1 \\
+                0 
+            \end{pmatrix}
+            +y
+            \begin{pmatrix}
+                0 \\
+                1 \\
+                1 
+            \end{pmatrix}
+            =
+            \begin{pmatrix}
+                0 \\
+                0 \\
+                0 
+            \end{pmatrix}
+        \end{gather*}
+        Then, we have
+        \begin{gather*}
+            x
+            \begin{pmatrix}
+                1 \\
+                1 \\
+                0 
+            \end{pmatrix}
+            +y
+            \begin{pmatrix}
+                0 \\
+                1 \\
+                1 
+            \end{pmatrix}
+            =
+            \begin{pmatrix}
+                0 \\
+                0 \\
+                0 
+            \end{pmatrix}
+            \Rightarrow
+            \begin{pmatrix}
+                x \\
+                x + y \\
+                y 
+            \end{pmatrix}
+            =
+            \begin{pmatrix}
+                0 \\
+                0 \\
+                0 
+            \end{pmatrix}
+            \Rightarrow x = y = 0
+        \end{gather*}
+
+        Hence, $S'$ is linearly independent. We already know that, $\text{span}_\rn S' = V$. Hence,
+        $S'$ is a basis of $V$. Hence, $\text{dim}V = |S'| = 2$.
+    \end{solution}
+\begin{exercise}
+    $ $
+    \begin{enumerate}[label={(\roman*)}]
+        \item Let 
+                $A = 
+                \begin{bmatrix}
+                    1 & 1 & 1 \\ 
+                    2 & 2 & 3 \\ 
+                    x & y & z 
+                \end{bmatrix}$
+                And let $V = \{(x,y , z) \in \rn^3 : \det(A) = 0\}$. Show that $V$ is a vector space, and find dimension of $V$. 
+        \item Let $V = \{(x_1- x_2 + x_3,~x_1 + x_2 - x_3) : (x_1, x_2, x_3) \in \rn^3\}$. Show that $V$ is a vector space and find the dimension of $V$.
+    \end{enumerate}
+\end{exercise}
+\begin{solution}
+    $ $
+    \begin{enumerate}[label={(\roman*)}]
+        \item Observe that, $\det(A) = 0 \Rightarrow (2z - 3y) - (2z - 3x) + (2x - 2y) = 0 \Rightarrow x = y$.
+            Then, any arbitrary $v \in V$ is of the form 
+            $v = 
+            \begin{pmatrix}
+                x \\ 
+                x \\ 
+                z
+            \end{pmatrix}
+            =x
+            \begin{pmatrix}
+                1 \\ 
+                1 \\ 
+                0
+            \end{pmatrix}
+            +z
+            \begin{pmatrix}
+                0 \\ 
+                0 \\ 
+                1
+            \end{pmatrix}
+            $
+
+            Let 
+            $S :=\left\{ 
+            \begin{pmatrix}
+                1 \\ 
+                1 \\ 
+                0
+            \end{pmatrix}
+            ,
+            \begin{pmatrix}
+                0 \\ 
+                0 \\ 
+                1
+            \end{pmatrix}
+            \right\}
+            $.
+            Then, $v \in \text{span}S$. Hence, \fbox{$V \subseteq \text{span}S$}.
+
+            Now, let $v \in \text{span}S$. Then, $v = a
+            \begin{pmatrix}
+                1 \\ 
+                1 \\ 
+                0
+            \end{pmatrix}
+            +b
+            \begin{pmatrix}
+                0 \\ 
+                0 \\ 
+                1
+            \end{pmatrix}
+            =
+            \begin{pmatrix}
+                a \\ 
+                a \\ 
+                b
+            \end{pmatrix}$
+            Then observe that, for $x = a, y = a \text{ and }z = b$, $\det(A) = 0$.
+            Hence, $v \in V$. Hence, \fbox{$\text{span}S \subseteq V$}. This implies that \fbox{$V = \text{span}S$}. Hence, $V$ is a vector space.
+
+            We claim that $S$ is linearly indepnedent. Let $\alpha, \beta \in \rn$ such that 
+            \begin{gather*}
+                \alpha
+                \begin{pmatrix}
+                    1 \\ 
+                    1 \\ 
+                    0 
+                \end{pmatrix}
+                +
+                \beta
+                \begin{pmatrix}
+                    0 \\ 
+                    0 \\ 
+                    1 
+                \end{pmatrix}
+                =
+                \begin{pmatrix}
+                    0 \\ 
+                    0 \\ 
+                    0
+                \end{pmatrix}
+            \end{gather*}
+            Then, we have 
+            \begin{gather*}
+                \alpha
+                \begin{pmatrix}
+                    1 \\ 
+                    1 \\ 
+                    0 
+                \end{pmatrix}
+                +
+                \beta
+                \begin{pmatrix}
+                    0 \\ 
+                    0 \\ 
+                    1 
+                \end{pmatrix}
+                =
+                \begin{pmatrix}
+                    0 \\ 
+                    0 \\ 
+                    0
+                \end{pmatrix}
+                \Rightarrow
+                \begin{pmatrix}
+                    \alpha \\ 
+                    \alpha \\ 
+                    \beta 
+                \end{pmatrix}
+                =
+                \begin{pmatrix}
+                    0 \\ 
+                    0 \\ 
+                    0
+                \end{pmatrix}
+                \Rightarrow
+                \alpha = \beta = 0
+            \end{gather*}
+            Hence, the set $S$ is linearly independent. Thus $S$ is a basis of $V$,
+            and \fbox{$\dim V = |S| = 2$}.
+        \item Observe that, any arbitrary $v \in V$ is of the form 
+            $$v = 
+            \begin{pmatrix}
+                x_1 - x_2 + x_3 \\ 
+                x_1 + x_2 - x_3
+            \end{pmatrix}
+            =x_1
+            \begin{pmatrix}
+                1 \\ 
+                1 
+            \end{pmatrix}
+            +x_2
+            \begin{pmatrix}
+                -1 \\ 
+                1
+            \end{pmatrix}
+            +x_3
+            \begin{pmatrix}
+                1 \\ 
+                -1
+            \end{pmatrix}
+            $$
+            Let $S := 
+            \left\{
+            \begin{pmatrix}
+                1 \\ 
+                1 
+            \end{pmatrix}
+            ,
+            \begin{pmatrix}
+                -1 \\ 
+                1
+            \end{pmatrix}
+            ,
+            \begin{pmatrix}
+                1 \\ 
+                -1
+            \end{pmatrix}
+        \right\}
+        $. 
+        Then, $v \in \text{span}S$. Hence, \fbox{$V \subseteq \text{span}S$}.
+
+        Now, let $v \in \text{span}S$. Then,
+        $v = 
+            a
+            \begin{pmatrix}
+                1 \\ 
+                1 
+            \end{pmatrix}
+            +b
+            \begin{pmatrix}
+                -1 \\ 
+                1
+            \end{pmatrix}
+            +c
+            \begin{pmatrix}
+                1 \\ 
+                -1
+            \end{pmatrix}
+            =
+            \begin{pmatrix}
+                a - b + c \\ 
+                a + b - c
+            \end{pmatrix}
+            $ where $a, b, c \in \rn$. Then clearly, for $x_1 = a,~x_2 = b \text{ and }x_3 = c$
+            $v \in V$. Hence, \fbox{$\text{span}S \subseteq V$}. This implies that \fbox{$V = \text{span}S$}
+            
+            Now, observe that $S$ is not a linearly independent set since, 
+            $0
+            \begin{pmatrix}
+                1 \\ 
+                1 
+            \end{pmatrix}
+            +
+            \begin{pmatrix}
+                -1 \\ 
+                1
+            \end{pmatrix}
+            +
+            \begin{pmatrix}
+                1 \\ 
+                -1
+            \end{pmatrix}
+            =
+            \begin{pmatrix}
+                0 \\ 
+                0
+            \end{pmatrix}
+            $
+            We remove $s_3 := 
+            \begin{pmatrix}
+                1 \\ 
+                -1 
+            \end{pmatrix}
+            $ from $S$, to define $S' := S \setminus \{s_3\}$. We claim that $S'$ is
+            linearly independent. Let $\alpha, \beta \in \rn$ be such that, 
+            \begin{gather*}
+                \alpha
+                \begin{pmatrix}
+                    1 \\ 
+                    1 
+                \end{pmatrix}
+                + \beta
+                \begin{pmatrix}
+                    -1 \\ 
+                    1 
+                \end{pmatrix}
+                =
+                \begin{pmatrix}
+                    0 \\ 
+                    0 
+                \end{pmatrix}
+            \end{gather*}
+            Then,
+            \begin{gather*}
+                \alpha
+                \begin{pmatrix}
+                    1 \\ 
+                    1 
+                \end{pmatrix}
+                + \beta
+                \begin{pmatrix}
+                    -1 \\ 
+                    1 
+                \end{pmatrix}
+                =
+                \begin{pmatrix}
+                    0 \\ 
+                    0 
+                \end{pmatrix}
+                \Rightarrow
+                \begin{pmatrix}
+                    \alpha - \beta \\ 
+                    \alpha + \beta 
+                \end{pmatrix}
+                =
+                \begin{pmatrix}
+                    0 \\ 
+                    0 
+                \end{pmatrix}
+                \Rightarrow
+                \alpha = -\beta \And \alpha = \beta
+                \Rightarrow
+                \alpha = \beta = 0
+            \end{gather*}
+            Hence, $S'$ is linearly independent. Thus $S'$ is a basis of $V$ and,
+            \fbox{$\dim V = |S'| = 2$}
+    \end{enumerate}
+\end{solution}
+\begin{exercise}
+    Let $A$ be an $n \times n$ real matrix such that the sum of the entries of each column of $A$ is $\lambda$. Show that $\lambda$ is an eigenvalue of $A$.
+\end{exercise}
+\begin{solution}
+    Since $A$ is an $n \times n$ matrix, let us define $a_{ij}$ as the the element in the $i^{th}$ row and $j^{th}$ column of $A$.
+    Then, 
+    \begin{gather*}
+        A^T=
+        \begin{bmatrix}
+            a_{11} & \dots & a_{n1} \\
+            \vdots & \ddots & \vdots \\
+            a_{1n} & \dots & a_{nn} 
+        \end{bmatrix} 
+    \end{gather*}
+    Observe that, for $A^T$ we have all the rows summing up, to give $\lambda$.
+    Let 
+    \begin{gather*}
+        v := 
+        \begin{bmatrix}
+            1 \\
+            \vdots \\
+            1 
+        \end{bmatrix}
+    \end{gather*}
+    We also have ,
+    \begin{gather*}
+        Av =
+        \begin{bmatrix}
+            a_{11} & \dots & a_{n1} \\
+            \vdots & \ddots & \vdots \\
+            a_{1n} & \dots & a_{nn} 
+        \end{bmatrix} 
+        \begin{bmatrix}
+            1 \\
+            \vdots \\
+            1 
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            \sum_{i = 1}^n a_{i1} \\
+            \vdots \\
+            \sum_{i = 1}^n a_{in}
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            \lambda \\
+            \vdots \\
+            \lambda 
+        \end{bmatrix}
+        =\lambda
+        \begin{bmatrix}
+            1 \\
+            \vdots \\
+            1 
+        \end{bmatrix}
+        = \lambda v
+    \end{gather*}
+    Hence, $\lambda$ is an eigenvalue of $A^T$. In previous the previous assignment I have shown that the eigenvalue of $A$ and $A^T$ are equal.
+    Hence, $\lambda$ is an eigenvalues of $A$. 
+\end{solution}
+\begin{exercise}
+    For a prime $p$, find the cardinality of $\text{GL}_n(\mathbb{F}_p)$.
+\end{exercise}
+\begin{solution}
+    For a $n \times n$ matrix to have a non-zero determinant, all the columns of the martix must be linearly independent.
+    Consider the first column. For each entry we have $p$ choices, and there are $n$ entries. Hence, a total of $p^n$ combinations. But,
+    we must exclude the case where all entries are 0, since that would result in matrix whose determinant is 0. Hence, for the first column,
+    we have a total of $p^n - 1$ choices. Now consider constructing the $k^{th}$ column where $k \in [2, \dots ,n]$.
+    Again, $n$ entries, with $p$ choices for each entry. This gives us $p^n$ combinations.
+    However, this column, must not be a scalar multiple of any of the previous columns. 
+    There are $k -1$ columns, with $p$ scalar multiples of each column (note that this already counts the o vector). This gives us $p^{k-1}$ combinations to exclude.
+    Hence, for the  $k^{th}$ column, the number of choices are $p^n - p^{k-1}$.
+
+    Hence, total number of all such combinations is $(p^k - 1)\prod_{k = 2}^n (p^n - p^{k-1}) = \prod_{k = 1}^n (p^n - p^{k-1})=\prod_{k = 0}^{n-1} (p^n - p^k)$.
+
+    Hence, $$|\text{GL}_n{(\mathbb{F}_p)}| = \prod_{k=0}^{n-1} (p^n - p^k)$$
+\end{solution}
+\begin{exercise}
+        Let $V$ be a finite dimensional real vector space, and let $W_1, W_2, \dots , W_n$ be proper subspaces of $V$. Show that
+        $$V \neq \bigcup_{i=1}^n W_i$$
+\end{exercise}
+\begin{solution}
+    First, we remove all $W_k$ that satisfy $W_k \subseteq \bigcup_{\substack{i = 1\\ i \neq k}}^n W_i$.
+    Since $\bigcup_{\substack{i = 1}}^n W_i = W_k \cup \bigcup_{\substack{i = 1\\ i \neq k}}^n W_i  = \bigcup_{\substack{i = 1\\ i \neq k}}^n W_i$.
+    Then, we index these subspaces again, using $I : = \{1, \dots ,n'\}$, as $W'_i ~ \forall i \in I$. 
+    Clearly, $\bigcup_{i = 1}^n W_i = \bigcup_{i \in I} W'_i$
+    We wish to show that $V \neq \bigcup_{i \in I} W'_i$. Let us assume to the contrary, that
+    $V = \bigcup_{i \in I}W'_i$. 
+
+    Observe that, by the construction of $W'_1$, $\exists u \in W'_1$ such that $u \notin \bigcup_{i \in I \setminus \{1\}}W'_i$.
+    Note that, this implies that $u \notin W'_i~\forall i \in I \setminus \{1\}$
+
+    Also, $W'_1 \subset V \Rightarrow \exists v \in V \text{ such that } v \notin W'_1$.
+
+    Let us construct a set $S$ as, $$S := \{v + \alpha u : \alpha \in \rn \setminus \{0\}\}$$
+    Then, clearly, $S$ is an infinite set and $S \subset V$.
+
+    Observe that, $$S \cap W'_1 = \phi$$Since if not, $\exists \alpha \in \rn \setminus \{0\}$ such that $v + \alpha u \in W'_1$ but we also have $u \in W'_1 \Rightarrow \alpha u \in W'_1$. 
+    Then, $v + \alpha u - \alpha u = v \in W'_1$. This is absurd, since we know that $v \notin W'_1$
+
+    Also, observe that $$|S \cap W'_i| \leq 1 ~ \forall i \in I \setminus \{1\}$$
+    Since, if not, then $\exists i \in I \setminus \{1\}$ such that $v + \alpha_1 u, v + \alpha_2 u \in W'_i$ for some $\alpha_1, \alpha_2 \in \rn$ with $\alpha_1 \neq \alpha_2$.
+    But then, $(v + \alpha_1 u) - (v + \alpha_2 u) = (\alpha_1 - \alpha_2) u\in W'_i \Rightarrow u \in W'_i$ 
+    This is absurd, since we know that $u \notin W'_i ~ \forall i \in I \setminus \{1\}$.
+
+    hence, we have 
+    \begin{align*}
+        & |S \cap \bigcup_{i \in I}W'_i| \leq n' - 1 \\ 
+        \Rightarrow & |S \cap V| \leq n' -1 \\ 
+        \Rightarrow & |S| \leq n' - 1
+    \end{align*}
+    But this is a contradiction since we know that $S$ is infinite. Hence, our assumption must be false. i.e.,
+    $V \neq \bigcup_{i \in I}W'_i$.Hence, $$V \neq \bigcup_{i = 1}^n W_i$$
+\end{solution}
+\end{document}
+
