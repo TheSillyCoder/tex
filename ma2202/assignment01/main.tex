@@ -1,0 +1,157 @@
+\documentclass[10pt]{scrartcl}
+
+\usepackage[T1]{fontenc}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{fancyhdr}
+\geometry{a4paper, margin=0.8in}
+\pagestyle{fancy}
+\lhead{MA2202 - Assignment 01 Solutions}
+\rhead{Debayan Sarkar \texttt{22MS002}}
+\everymath{\displaystyle}
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}
+\newenvironment{solution} {\begin{proof}[\normalfont \textbf{Solution}]} {\end{proof}}
+\newcommand{\nn}{\mathbb{N}}
+\newcommand{\rn}{\mathbb{R}}
+\newcommand{\q}{\mathbb{Q}}
+\newcommand{\p}{\mathcal{P}}
+\newcommand{\z}{\mathbb{Z}}
+\title{MA2202 - Probability I}  
+\subtitle{Assignment 1 Solutions}
+\author{Debayan Sarkar \\ \texttt{22MS002} \\ Group C}
+\date{\today}
+
+\geometry{a4paper, margin=1in}
+\setlength{\parindent}{0pt}
+\begin{document}
+\maketitle
+\begin{exercise}(10 Points)
+
+    Show that if you keep on throwing a fair die, the probability of eventual occurence of the outcome six is 1.
+\end{exercise}
+\begin{solution}
+    If we toss a fair die till we find a six, the possible outcomes are $$\Omega = \{\text{Get a six after a finite number of tries} \} \cup \{ \text{Never get a six} \}$$
+    Let $A$ be the event of eventually getting a six after a finite number of tries, and let $B$ be the event of never getting a six
+    and let $A_n$ be the event of getting a six after the $n^{th}$ try, $\forall n\in \nn$. Now, since the die is fair, for the event 
+    $A_n$, for each of the the first $n-1$ throws, the probability of not getting a six is $\cfrac{5}{6}$, and the probability of getting a head
+    on the $n^{th}$ throw is $\cfrac{1}{6}$. Hence, \fbox{$P(A_n) = \cfrac{1}{6}\cdot\left(\cfrac{5}{6}\right)^{n-1}$}
+
+    Now, clearly $A = \cup_{n=1}^{\infty}A_n$ and $A_i \cap A_j = \phi ~ \forall i \neq j$ then using the axioms of probability we have, 
+    \begin{align*}
+        P(A) &= P\left(\cup_{n=1}^{\infty} A_n\right) \\ 
+             &= \sum_{n=1}^{\infty} P(A_n) \\ 
+             &= \sum_{n = 1}^{\infty} \cfrac{1}{6} \cdot \left(\cfrac{5}{6}\right)^{n-1} \\ 
+             &= \cfrac{1}{6}\cdot \sum_{n = 1}^{\infty} \left(\cfrac{5}{6}\right)^{n-1} \\ 
+             &= \cfrac{1}{6} \cdot \cfrac{1}{1- \cfrac{5}{6}} \\ 
+             &= \cfrac{1}{6}\cdot 6 \\ 
+             &= 1
+    \end{align*}
+    Hence, the probability of eventually getting a six is 1.
+\end{solution}
+\clearpage
+\begin{exercise}(10 Points)
+
+    Suppose $(\Omega, \mathcal{E}, P)$ be a given probablity space and $A_1, A_2, \dots ,A_n \in \mathcal{E}$. Then show that 
+    $$P(A_1 \cup A_2 \cup \dots \cup A_n) = \sum_{i=1}^{n}P(A_i) - \sum_{1\leq i < j\leq n}^{n}P(A_i \cap A_j) + \dots + (-1)^{n - 1}P(A_1 \cap \dots \cap A_n)$$
+\end{exercise}
+\begin{solution}
+    We shall prove this via induction on $n$ i.e. the number of events. For the base case when $n=2$, observe that,
+    $A_1 = (A_1 \cap A_2) \cup (A_1 cap A_2^c)$. Where $A_2^c = \Omega \setminus A_2$. Since $A_1 \cap A_2$ and 
+    $A_1 \cap A_2^c$ are mutually exclusive, using the axioms of probability we have 
+    \begin{equation}
+        P(A_1) = P(A_1 \cap A_2) + P(A_1 \cap A_2^c)
+    \end{equation}
+    Also, 
+    \begin{align*}
+        P(A_1 \cup A_2) &= P(A_1 \cap A_2^c) + P(A_2) \tag{$(A_1 \cap A_2^c) \cap A_2 = \phi$} \\ 
+                        &=P(A_1) + P(A_2) - P(A_1 \cap A_2) \tag{from (1)}
+    \end{align*}
+    Let us assume that this statement holds for some $n=k$. We wish to show that it holds for $n = k + 1$. 
+    \begin{align}
+        P(\cup_{i = 1}^{k + 1}) &= P(\cup_{i = 1}^{k}A_i\cup A_{k + 1}) \nonumber\\ 
+                                       &= P(\cup_{i = 1}^{k}A_i) + P(A_{k + 1}) - P(\cup_{i = 1}^{k}A_i \cap A_{k + 1}) \tag{Base Case} \\
+                                       &=  \sum\limits_{i = 1}^{k} P(A_i) - \sum\limits_{1\leq i < j\leq k}^{n}P(A_i \cap A_j) + \dots + (-1)^{k - 1}P(\cap_{i = 1}^{k}{A_i}) + P(A_{k + 1}) - P(\cup_{i = 1}^{k}A_i \cap A_{k + 1}) \tag{Induction Hypothesis}\\ 
+                                       &=  \sum\limits_{i = 1}^{k + 1} P(A_i) - \sum\limits_{1\leq i < j\leq k}^{n}P(A_i \cap A_j) + \dots + (-1)^{k - 1}P(\cap_{i = 1}^{k}{A_i}) - P(\cup_{i = 1}^{k}A_i \cap A_{k + 1})
+    \end{align}
+    Now, we also have
+    \begin{align*}
+        P(\cup_{i = 1}^{k} A_i \cap A_k) &= P(\cup_{i = 1}^{k} (A_i \cap A_k)) \tag{Distributivity of unions and intersections}\\ 
+                                         &= \sum\limits_{i = 1}^{k}P(A_i \cap A_{k+1}) - \dots + (-1)^{k- 1}P(\cap_{i = 1}^{k + 1}A_i) \tag{Induction Hypothesis}
+    \end{align*}
+    Substituting this into (2) we get,
+    \begin{align*}
+        P(\cup_{i = 1}^{k + 1}) = \sum\limits_{i = 1}^{k + 1}P(A_i) - \sum\limits_{1 \leq i < j \leq k + 1}^{k + 1}P(A_i \cap A_j) + \dots + (-1)^{k}P(\cap_{i = 1}^{k + 1} A_i)
+    \end{align*}
+    Hence, the statement is true for $n = k + 1$. This proves our claim.
+
+\end{solution}
+\begin{exercise}(10 Points)
+
+    To the choice of each $n \in \nn$, could you assign a probability $P(n) > 0$ such that the following conditions hold?
+    \begin{enumerate}[label={(\alph*)}]
+        \item $P(m) \neq P(n)$ for all $m, n \in \nn$
+        \item The probability of choosing an odd positive integer is the same as the probabilty of choosing an even integer.
+    \end{enumerate}
+    Justify your answer!
+\end{exercise}
+\begin{solution}
+    Let us define $P: \nn \to [0, 1]$ as,
+    $$
+    P(n) = 
+    \begin{cases}
+        \left(\cfrac{1}{2}\right)^{\cfrac{n}{2} + 1} ~ \text{ if } n \text{ is even} \\ 
+        \left(\cfrac{1}{3}\right)^{\cfrac{n + 1}{2}} ~ \text{ if } n \text{ is odd}
+    \end{cases}
+    $$
+    Then, clearly $P(m) \neq P(n) ~ \forall m \neq n$ since 2 and 3 are prime numbers and thus, condition (a) is satisfied.
+    Furthermore, Let $E := \{2k : k \in nn\}$ and $O := \{2k - 1 : k \in \nn \}$
+    $$P(E) = \sum_{k = 1}^{\infty} P(2k) = \sum_{k = 1}^{\infty} \left(\cfrac{1}{2}\right)^{k + 1} = \cfrac{1}{2}$$
+    and, 
+    $$P(O) = \sum_{k = 1}^{\infty} P(2k - 1) = \sum_{k = 1}^{\infty} \left(\cfrac{1}{3}\right)^{k} = \cfrac{1}{2}$$
+
+    Thus, it also satisfies condition (b).
+\end{solution}
+\begin{exercise}(10 Points)
+
+    Seven students of IISER Kolkata went to participate in an event at IISER Mohali. They booked
+    AC 3-tier tickets from Howrah to Chandigarh in Netaji Express, which has three AC 3-tier
+    coaches. Every such coach has eight coupes (i.e. compartments), each coupe containing eight
+    berths. If the berths were allocated randomly, find the probability of at least two among the
+    seven students being allocated berths in the same coupe.
+\end{exercise}
+\begin{solution}
+    Since each coupe has more than 7 berths, all can be considered to be equally likely. Then, we have a total of 24 coupes, and 
+    7 people. The probability that atleast two of them will be allocated berths in the same coupe is 
+
+$P(\text{Atleast two in the same coupe}) = 1 - P(\text{No two in the same coupe}) = 1 - \cfrac{^{24}P_7}{24^7} \approx 0.62$
+\end{solution}
+\begin{exercise}(10 Points)
+
+    Carrom is played with a red, nine black and nine white coins (and a striker) on a square board
+    with a pocket in each corner. If all these coins are scattered randomly (none of them being in
+    any pocket) on a 29 inch $\times$ 29 inch carrom board, show that the probability of at least two of
+    the coins being less than three inches apart is greater than $\cfrac{1}{2}$.
+\end{exercise}
+\begin{solution}
+    We have a total of 19 coins, and a 29 inch $\times$ 29 inch carrom board. We will assume the coins to be point objects, 
+    and the carrom board to be a square of dimensions $29 \times 29$. Hence, it suffices to show, that if we place 
+    19 points on a square of the given dimension, the probability that atleast 2 of them will be less than 3 inches apart is 
+    more than 1/2. 
+
+    Let us divide the given square, into smaller squares of dimension $\cfrac{29}{14} \times \cfrac{29}{14}$, with sides parallel to the the sides of the original square. 
+    Then, the square has now been equally divided into 196 smaller squares. Observe that, the length of the diagonals of the small squares is 
+    $\cfrac{29}{14}\sqrt{2} \approx 2.93 < 3$. Hence, if we have any two points in one of these squares, the distance between them is less than 3.
+
+    The probablity that atleast 2 out of the 19 coins will be in the same square can calculated as discussed in class, as 
+    $1 - \cfrac{^{196}P_{19}}{196^19} \approx 0.59 > \cfrac{1}{2}$.
+
+    Hence, the probability that atleast 2 of the coins will be less than 3 inches apart is greater than $\cfrac{1}{2}$.
+\end{solution}
+\end{document}
+
