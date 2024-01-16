@@ -36,10 +36,10 @@
     Show that if you keep on throwing a fair die, the probability of eventual occurence of the outcome six is 1.
 \end{exercise}
 \begin{solution}
-    If we toss a fair die till we find a six, the possible outcomes are $$\Omega = \{\text{Get a six after a finite number of tries} \} \cup \{ \text{Never get a six} \}$$
+    If we throw a fair die till we find a six, the possible outcomes are $$\Omega = \{\text{Get a six after a finite number of tries} \} \cup \{ \text{Never get a six} \}$$
     Let $A$ be the event of eventually getting a six after a finite number of tries, and let $B$ be the event of never getting a six
     and let $A_n$ be the event of getting a six after the $n^{th}$ try, $\forall n\in \nn$. Now, since the die is fair, for the event 
-    $A_n$, for each of the the first $n-1$ throws, the probability of not getting a six is $\cfrac{5}{6}$, and the probability of getting a head
+    $A_n$, for each of the the first $n-1$ throws, the probability of not getting a six is $\cfrac{5}{6}$, and the probability of getting a six
     on the $n^{th}$ throw is $\cfrac{1}{6}$. Hence, \fbox{$P(A_n) = \cfrac{1}{6}\cdot\left(\cfrac{5}{6}\right)^{n-1}$}
 
     Now, clearly $A = \cup_{n=1}^{\infty}A_n$ and $A_i \cap A_j = \phi ~ \forall i \neq j$ then using the axioms of probability we have, 
