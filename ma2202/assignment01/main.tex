@@ -74,7 +74,7 @@
     \end{align*}
     Let us assume that this statement holds for some $n=k$. We wish to show that it holds for $n = k + 1$. 
     \begin{align}
-        P(\cup_{i = 1}^{k + 1}) &= P(\cup_{i = 1}^{k}A_i\cup A_{k + 1}) \nonumber\\ 
+        P(\cup_{i = 1}^{k + 1}A_i) &= P(\cup_{i = 1}^{k}A_i\cup A_{k + 1}) \nonumber\\ 
                                        &= P(\cup_{i = 1}^{k}A_i) + P(A_{k + 1}) - P(\cup_{i = 1}^{k}A_i \cap A_{k + 1}) \tag{Base Case} \\
                                        &=  \sum\limits_{i = 1}^{k} P(A_i) - \sum\limits_{1\leq i < j\leq k}^{n}P(A_i \cap A_j) + \dots + (-1)^{k - 1}P(\cap_{i = 1}^{k}{A_i}) + P(A_{k + 1}) - P(\cup_{i = 1}^{k}A_i \cap A_{k + 1}) \tag{Induction Hypothesis}\\ 
                                        &=  \sum\limits_{i = 1}^{k + 1} P(A_i) - \sum\limits_{1\leq i < j\leq k}^{n}P(A_i \cap A_j) + \dots + (-1)^{k - 1}P(\cap_{i = 1}^{k}{A_i}) - P(\cup_{i = 1}^{k}A_i \cap A_{k + 1})
