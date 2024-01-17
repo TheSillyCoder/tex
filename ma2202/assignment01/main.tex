@@ -27,7 +27,7 @@
 \author{Debayan Sarkar \\ \texttt{22MS002} \\ Group B}
 \date{\today}
 
-\geometry{a4paper, margin=1in}
+\geometry{a4paper, margin=0.8in}
 \setlength{\parindent}{0pt}
 \begin{document}
 \maketitle
@@ -81,12 +81,13 @@
     \end{align}
     Now, we also have
     \begin{align*}
-        P(\cup_{i = 1}^{k} A_i \cap A_k) &= P(\cup_{i = 1}^{k} (A_i \cap A_k)) \tag{Distributivity of unions and intersections}\\ 
-                                         &= \sum\limits_{i = 1}^{k}P(A_i \cap A_{k+1}) - \dots + (-1)^{k- 1}P(\cap_{i = 1}^{k + 1}A_i) \tag{Induction Hypothesis}
+        P(\cup_{i = 1}^{k} A_i \cap A_{k + 1}) &= P(\cup_{i = 1}^{k} (A_i \cap A_{k + 1})) \tag{Distributivity of unions and intersections}\\ 
+                                         &= \sum\limits_{i = 1}^{k}P(A_i \cap A_{k+1}) - \sum\limits_{1 \leq i < j \leq k}^{k} P((A_i \cap A_{k + 1}) \cap (A_j \cap A_{k + 1})) + \dots + (-1)^{k- 1}P(\cap_{i = 1}^{k + 1}A_i) \tag{Induction Hypothesis} \\
+                                         &= \sum\limits_{i = 1}^{k}P(A_i \cap A_{k+1}) - \sum\limits_{1 \leq i < j \leq k}^{k} P(A_i \cap A_j \cap A_{k + 1}) + \dots + (-1)^{k- 1}P(\cap_{i = 1}^{k + 1}A_i) \tag{Intersections are commutative} \\
     \end{align*}
     Substituting this into (2) we get,
     \begin{align*}
-        P(\cup_{i = 1}^{k + 1}) = \sum\limits_{i = 1}^{k + 1}P(A_i) - \sum\limits_{1 \leq i < j \leq k + 1}^{k + 1}P(A_i \cap A_j) + \dots + (-1)^{k}P(\cap_{i = 1}^{k + 1} A_i)
+        P(\cup_{i = 1}^{k + 1}A_i) = \sum\limits_{i = 1}^{k + 1}P(A_i) - \sum\limits_{1 \leq i < j \leq k + 1}^{k + 1}P(A_i \cap A_j) + \dots + (-1)^{k}P(\cap_{i = 1}^{k + 1} A_i)
     \end{align*}
     Hence, the statement is true for $n = k + 1$. This proves our claim.
 
@@ -149,7 +150,7 @@ $P(\text{Atleast two in the same coupe}) = 1 - P(\text{No two in the same coupe}
     $\cfrac{29}{14}\sqrt{2} \approx 2.93 < 3$. Hence, if we have any two points in one of these squares, the distance between them is less than 3.
 
     The probablity that atleast 2 out of the 19 coins will be in the same square can calculated as discussed in class, as 
-    $1 - \cfrac{^{196}P_{19}}{196^19} \approx 0.59 > \cfrac{1}{2}$.
+    $1 - \cfrac{^{196}P_{19}}{196^{19}} \approx 0.59 > \cfrac{1}{2}$.
 
     Hence, the probability that atleast 2 of the coins will be less than 3 inches apart is greater than $\cfrac{1}{2}$.
 \end{solution}
