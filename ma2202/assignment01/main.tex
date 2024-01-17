@@ -127,10 +127,15 @@
     seven students being allocated berths in the same coupe.
 \end{exercise}
 \begin{solution}
-    Since each coupe has more than 7 berths, all can be considered to be equally likely. Then, we have a total of 24 coupes, and 
-    7 people. The probability that atleast two of them will be allocated berths in the same coupe is 
+    The total number of coupes is $3 \times 8 = 24$, and the total number of berths is $24 \times 8 = 192$. Hence, the total number of assigning berths to 7 people is 
+    $^{192}P_7$. Also, the total number of ways in which 7 people can be assigned distinct coupes, is $^{24}P_7$.
+    Now, after being assigned a coupe, each person has 8 choices for being assigned a berth in that coupe. So, the number of ways 7 people
+    can be assigned berths so that no two people are in the same coupe is $^{24}P_7 \cdot 8^7$. Then, 
+    $$\boxed{P(\text{Atleast two in same coupe}) = 1 - P(\text{No two in same coupe}) = 1 - \cfrac{^{24}P_7\cdot8^7}{^{192}P_7} = \approx 0.58}$$
+    % Since each coupe has more than 7 berths, all can be considered to be equally likely. Then, we have a total of 24 coupes, and 
+    % 7 people. The probability that atleast two of them will be allocated berths in the same coupe is 
 
-$P(\text{Atleast two in the same coupe}) = 1 - P(\text{No two in the same coupe}) = 1 - \cfrac{^{24}P_7}{24^7} \approx 0.62$
+% $P(\text{Atleast two in the same coupe}) = 1 - P(\text{No two in the same coupe}) = 1 - \cfrac{^{24}P_7}{24^7} \approx 0.62$
 \end{solution}
 \begin{exercise}(10 Points)
 
