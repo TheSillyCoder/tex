@@ -1,0 +1,182 @@
+\documentclass[10pt]{scrartcl}
+
+\usepackage[T1]{fontenc}
+\usepackage{amssymb, amsmath, amsthm}
+\usepackage{geometry, graphicx, enumitem, wrapfig, fancyhdr,cancel, physics}
+\usepackage[english]{babel}
+
+% \usepackage{listings, xcolor}
+% \definecolor{codegreen}{rgb}{0,0.6,0}
+% \definecolor{codegray}{rgb}{0.5,0.5,0.5}
+% \definecolor{codepurple}{rgb}{0.58,0,0.82}
+% \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+% \lstdefinestyle{mystyle}{
+%     backgroundcolor=\color{backcolour},   
+%     commentstyle=\color{codegreen},
+%     keywordstyle=\color{magenta},
+%     numberstyle=\tiny\color{codegray},
+%     stringstyle=\color{codepurple},
+%     basicstyle=\ttfamily\footnotesize,
+%     breakatwhitespace=false,         
+%     breaklines=true,                 
+%     captionpos=b,                    
+%     keepspaces=true,                 
+%     numbers=left,                    
+%     numbersep=5pt,                  
+%     showspaces=false,                
+%     showstringspaces=false,
+%     showtabs=false,                  
+%     tabsize=4
+% }
+% \lstset{style=mystyle}
+\geometry{a4paper, margin=0.8in}
+\pagestyle{fancy}
+\lhead{PH3102 - Assignment 2 Solutions}
+\rhead{Debayan Sarkar \texttt{22MS002}}
+\everymath{\displaystyle}
+\theoremstyle{definition}
+\newtheorem{exercise}{Question}
+\newenvironment{solution} {\begin{proof}[\normalfont \textbf{Solution}]} {\end{proof}}
+
+\renewcommand{\qedsymbol}{}
+\newcommand{\nn}{\mathbb{N}}
+\newcommand{\npixL}{\frac{n\pi x}{L}}
+\newcommand{\rn}{\mathbb{R}}
+\newcommand{\q}{\mathbb{Q}}
+\newcommand{\p}{\mathcal{P}}
+\newcommand{\z}{\mathbb{Z}}
+\newcommand{\dx}{\mathrm{d}x}
+\newcommand*{\OO}{\hat{O}}
+\newcommand*{\Op}{\hat{p}}
+\newcommand*{\Ox}{\hat{x}}
+\newcommand*{\OH}{\hat{H}}
+\title{PH3102 - Quantum Mechanics}  
+\subtitle{Assignment 2 Solutions}
+\author{Debayan Sarkar \\ \texttt{22MS002}}
+\date{\today}
+
+\geometry{a4paper, margin=1in}
+\setlength{\parindent}{0pt}
+\begin{document}
+\maketitle
+\begin{exercise}
+    Consider $\hat{O}$ to be an operator defined by $$\hat{O} = \ket{\phi}\bra{\psi},$$ where $\ket{\phi}$ and $\ket{\psi}$ are 
+two vectors of the state space.
+    \begin{enumerate}[label={(\alph*)}]
+        \item Give the condition for $\hat{O}$ to be Hermitian.
+        \item Calculate $\hat{O}^2$. State the condition for $\hat{O}$ to be a projection operator.
+        \item Show that $\hat{O}$ can always be written in the form of $\hat{O} = \lambda P_1 P_2 $, where $\lambda$
+            is a constant and $P_1$ and $P_2$ are projection operators corresponding to the vectors $\ket{\phi}$ and $\ket{\psi}$
+            respectively.
+    \end{enumerate}
+\end{exercise}
+ 
+\begin{solution}
+    $ $
+    \begin{enumerate}[label={(\alph*)}]
+        \item For $\hat{O}$ to be Hermitian, we must have 
+            \begin{align*}
+                &\hat{O} = \hat{O}^\dagger \\ 
+                \Rightarrow &\ket{\phi} \bra{\psi} = (\ket{\phi} \bra{\psi})^\dagger \\
+                \Rightarrow &\ket{\phi} \bra{\psi} = \ket{\psi} \bra{\phi} \\
+                \Rightarrow &\ket{\phi} \bra{\psi} \ket{\psi} = \ket{\psi} \bra{\phi} \ket{\psi} \tag{Acting on $\ket{\psi}$}\\
+                \Rightarrow &\ket{\phi} \bra{\psi} \ket{\psi} = \cfrac{\ip{\phi}{\psi}}{\ip{\psi}{\psi}} \ket{\psi}\\
+                \Rightarrow &\ket{\phi} = c\ket{\psi} \\
+            \end{align*}
+            Where $c = \cfrac{\ip{\phi}{\psi}}{\ip{\psi}{\psi}}$. Now we have, 
+            \begin{align*}
+                &\hat{O} = \hat{O}^\dagger \\ 
+                \Rightarrow &\ket{\phi} \bra{\psi} = (\ket{\phi} \bra{\psi})^\dagger \\
+                \Rightarrow &\ket{\phi} \bra{\psi} = \ket{\psi} \bra{\phi} \\
+                \Rightarrow &c^*\ket{\psi} \bra{\psi} = c\ket{\psi} \bra{\psi} \tag{$\ket{\phi} = c\ket{\psi}$}\\
+                \Rightarrow &c^* = c \\ 
+                \Rightarrow &c \in \rn
+            \end{align*}
+            Hence, for $\OO$ to be Hermitian we must meet the following conditions $$\boxed{\ket{\phi} = c\ket{\psi}, ~ c \in \rn}$$
+        \item We first calculate $\OO^2$. 
+            \begin{align*}
+                &\OO^2 = \op{\phi}{\psi} \cdot \op{\phi}{\psi} = \ket{\phi} \ip{\psi}{\phi} \bra{\psi} = \ip{\psi}{\phi} \OO \\ 
+                \Rightarrow ~ &\boxed{\OO^2 = \ip{\psi}{\phi} \OO}
+            \end{align*}
+            Hence, for $\OO$ to be a projection operator, we must have $\OO^2 = \OO$. Thus we must have 
+            $$\boxed{\ip{\phi}{\psi} = 1}$$
+        \item We are given that $P_1 = \op{\phi}$ and $P_2 = \op{\psi}{\psi}$ Then, we have
+            \begin{align*}
+                &P_1P_2 = \op{\phi}{\phi} \cdot \op{\psi}{\psi} \\
+                \Rightarrow &P_1P_2 = \ket{\phi}\ip{\phi}{\psi}\bra{\psi} \\
+                \Rightarrow &P_1P_2 = \ip{\phi}{\psi} \ket{\phi}\bra{\psi} \\
+                \Rightarrow &\cfrac{P_1P_2}{\ip{\phi}{\psi}} = \OO \tag{Assuming that $\ip{\phi}{\psi} \neq 0$}\\
+                \Rightarrow &\OO = \lambda P_1 P_2
+            \end{align*}
+            Where $\lambda = \cfrac{1}{\ip{\phi}{\psi}}$. Observe that, if $\ip{\phi}{\psi} = 0$, $P_1P_2 = 0$. Hence, we will not
+            be able to find a lambda such that $\OO = \lambda P_1P_2$. 
+    \end{enumerate}
+\end{solution}
+\begin{exercise}
+    Consider a real-valued wavefunction $\psi(x)$.
+    \begin{enumerate}[label=(\alph*)]
+        \item For this $\psi(x)$, show that the expectation value of momentum given by $\expval{\Op}$ is zero.
+
+        \item Now show that if $\psi(x)$ has a mean momentum given by $\expval{\Op}$, $e^{\flatfrac{i p_0 x}{\hbar}} \psi(x)$ has mean momentum $\expval{\Op} + p_0$.
+    \end{enumerate}
+    Use the Dirac “bra-ket” notation to carry out the computations.
+\end{exercise}
+\begin{solution}
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item We first calculate $\expval{\Op}$ as
+            \begin{align*}
+                \expval{\Op} &= \ev{\Op}{\psi} \\ 
+                             &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \ip{\psi}{x'} \mel{x'}{\Op}{x} \ip{x}{\psi} dx'dx \\ 
+                             &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \psi(x') \qty(-i\hbar \delta(x - x')\dv{x}) \psi(x) dx'dx \tag{$\psi^*(x') = \psi(x')$}\\ 
+                             &= \int_{-\infty}^{\infty} \psi(x) \qty(-i\hbar \dv{x}) \psi(x) dx \\ 
+                             &= -i\hbar \int_{-\infty}^{\infty} \psi(x) \dv{\psi(x)}{x} dx \tag{i}\\ 
+                             &= -i\hbar \qty[ \eval{\psi^2(x)}_{-\infty}^{\infty} - \int_{-\infty}^{\infty} \psi(x) \dv{\psi(x)}{x} dx] \\ 
+                             &= i\hbar \int_{-\infty}^{\infty} \psi(x) \dv{\psi(x)}{x} dx  \tag{Since $\psi(x)$ must vanish at $\pm \infty$}\\
+                             &= -\expval{\Op} \tag{using (i)} \\
+            \end{align*}
+            Hence, we have $$\expval{\Op} = - \expval{\Op} \Rightarrow \boxed{\expval{\Op} = 0}$$
+        \item Let $\phi(x) = e^{\flatfrac{ip_0x}{\hbar}}\psi(x)$. Then we have,
+            \begin{align*}
+                \ev{\Op}{\phi}  &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \ip{\phi}{x'} \mel{x'}{\Op}{x} \ip{x}{\phi} dx'dx \\ 
+                                &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \phi^*(x') \qty(-i\hbar \delta(x - x')\dv{x}) \phi(x) dx'dx \\ 
+                                &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-\flatfrac{ip_0x'}{\hbar}}\psi(x') \qty(-i\hbar \delta(x - x')\dv{x}) e^{\flatfrac{ip_0x}{\hbar}}\psi(x) dx'dx \\ 
+                                &= \int_{-\infty}^{\infty}  e^{-\flatfrac{ip_0}{\hbar}}\psi(x) \qty(-i\hbar \dv{x}) e^{\flatfrac{ip_0}{\hbar}}\psi(x) dx \\ 
+                                &= -i\hbar\int_{-\infty}^{\infty}  e^{-\flatfrac{ip_0x}{\hbar}}\psi(x) \dv{x}e^{\flatfrac{ip_0x}{\hbar}}\psi(x) dx \\ 
+                                &= -i\hbar\qty[\int_{-\infty}^{\infty}  e^{-\flatfrac{ip_0x}{\hbar}}\psi(x) e^{\flatfrac{ip_0x}{\hbar}}\dv{\psi(x)}{x} dx + \int_{-\infty}^{\infty}  e^{-\flatfrac{ip_0x}{\hbar}}\psi(x) \cfrac{ip_0}{\hbar}e^{\flatfrac{ip_0x}{\hbar}}\psi(x) dx] \\ 
+                                &= -i\hbar\qty[\int_{-\infty}^{\infty}  \psi(x) \dv{\psi(x)}{x} dx + \cfrac{ip_0}{\hbar}\int_{-\infty}^{\infty} \psi^2(x) dx] \\ 
+                                &= -i\hbar\int_{-\infty}^{\infty}  \psi(x) \dv{\psi(x)}{x} dx + p_0 \tag{Assuming $\psi(x)$ is normalized}\\ 
+                                &= \expval{\Op} + p_0 \tag{using (i)}
+            \end{align*}
+            Hence we have, $$\boxed{\ev{\Op}{\phi} = \expval{\Op} + p_0}$$.
+
+    \end{enumerate}
+\end{solution}
+\begin{exercise}
+    For the simple harmonic oscillator with the time-independent wavefunctions $\psi_n(x)$ satisfying
+    \begin{equation*}
+        \OH \psi_n(x) = \hbar \omega \qty(n + \cfrac{1}{2}) \psi_n(x),
+    \end{equation*}
+    consider the superposition at time $t = 0$
+    \begin{equation*}
+        \psi(x, 0) = \sum_{n=0}^\infty c_n \psi_n(x).
+    \end{equation*}
+    \begin{enumerate}[label=(\alph*)]
+        \item How should the coefficients be chosen so that $\psi(x, 0)$ is an eigenstate of lowering operator $\hat{a}$ with eigenvalue $\alpha$ (a given complex number), i.e.,
+              \begin{equation*}
+                  \hat{a} \psi(x, 0) = \alpha \psi(x, 0).
+              \end{equation*}
+
+        \item Using the expression for $\hat{a}$, find the explicit form of the wavefunction at $\psi(x, 0)$. Ensure that $\psi(x, 0)$ is correctly normalized.
+    \end{enumerate}
+    Note that eigenstates of $\hat{a}$ are referred to as "coherent states".
+\end{exercise}
+\begin{solution}
+    $ $
+    \begin{enumerate}[label=(\alph*)]
+        \item why am i doing this 
+            $$\boxed{\psi(x, t = 0) = \exp\qty(i\phi - \cfrac{|\alpha|^2}{2}) \sum_{n = 0}^{\infty} \cfrac{\alpha^n}{\sqrt{n!}} ~ \psi_n(x)}$$
+    \end{enumerate}
+\end{solution}
+\end{document}
