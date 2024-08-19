@@ -130,7 +130,7 @@ two vectors of the state space.
             \begin{align*}
                 \expval{\Op} &= \ev{\Op}{\psi} \\ 
                              &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \ip{\psi}{x'} \mel{x'}{\Op}{x} \ip{x}{\psi} dx'dx \\ 
-                             &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \psi(x') \qty(-i\hbar \delta(x - x')\dv{x}) \psi(x) dx'dx \tag{$\psi^*(x') = \psi(x')$}\\ 
+                             &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \psi(x') \qty(-i\hbar \delta(x' - x)\dv{x}) \psi(x) dx'dx \tag{$\psi^*(x') = \psi(x')$}\\ 
                              &= \int_{-\infty}^{\infty} \psi(x) \qty(-i\hbar \dv{x}) \psi(x) dx \\ 
                              &= -i\hbar \int_{-\infty}^{\infty} \psi(x) \dv{\psi(x)}{x} dx \tag{i}\\ 
                              &= -i\hbar \qty[ \eval{\psi^2(x)}_{-\infty}^{\infty} - \int_{-\infty}^{\infty} \psi(x) \dv{\psi(x)}{x} dx] \\ 
@@ -161,7 +161,7 @@ two vectors of the state space.
     \end{equation*}
     consider the superposition at time $t = 0$
     \begin{equation*}
-        \psi(x, 0) = \sum_{n=0}^\infty c_n \psi_n(x).
+        \psi(x, t = 0) = \sum_{n=0}^\infty c_n \psi_n(x).
     \end{equation*}
     \begin{enumerate}[label=(\alph*)]
         \item How should the coefficients be chosen so that $\psi(x, 0)$ is an eigenstate of lowering operator $\hat{a}$ with eigenvalue $\alpha$ (a given complex number), i.e.,
@@ -195,7 +195,7 @@ two vectors of the state space.
                 \Rightarrow &c_{n + 1} = \cfrac{\alpha}{\sqrt{n + 1}} c_{n}\\
                 \Rightarrow &c_{n} = \cfrac{\alpha}{\sqrt{n}}c_{n - 1} \\
                 \Rightarrow &c_{n} = \cfrac{\alpha^2}{\sqrt{n(n-1)}} c_{n - 2}\\
-                            &\vdots \\
+                            &\quad \quad \quad \quad ~~ \vdots \\
                 \Rightarrow &\boxed{c_n = \cfrac{\alpha^n}{\sqrt{n!}}c_0}
             \end{align*}
             Then our state $\ket{\psi}$ becomes, $$\boxed{\ket{\psi} = c_0 \sum_{n = 0}^{\infty} \cfrac{\alpha^n}{\sqrt{n!}} \ket{n}}$$
@@ -213,7 +213,38 @@ two vectors of the state space.
             $$\boxed{\ket\psi = \exp\qty(i\phi - \cfrac{|\alpha|^2}{2}) \sum_{n = 0}^{\infty} \cfrac{\alpha^n}{\sqrt{n!}}\ket n}$$
             And in position representation we have,
             $$\boxed{\psi(x, t = 0) = \exp\qty(i\phi - \cfrac{|\alpha|^2}{2}) \sum_{n = 0}^{\infty} \cfrac{\alpha^n}{\sqrt{n!}} ~ \psi_n(x)}$$
-        \item TODO
+        \item We are given that, $\Oa \psi = \alpha \psi$. Then in the position representation we have,
+            \begin{align*}
+                \alpha \psi(x) &= \mel{x}{\Oa}{\psi}\\ 
+                               &= \int_0^\infty \int_0^\infty \ip{x}{x'}\mel{x'}{\Oa}{x''}\ip{x''}{\psi} dx'' dx' \\ 
+                               &= \sqrt{\cfrac{m\omega}{2\hbar}}\int_0^\infty \int_0^\infty \ip{x}{x'}\mel{x'}{\Ox + \cfrac{i}{m\omega}\Op}{x''}\ip{x''}{\psi} dx'' dx' \\ 
+                               &= \sqrt{\cfrac{m\omega}{2\hbar}}\int_0^\infty \int_0^\infty \delta(x - x')\qty(\delta(x'-x'')x'' + \cfrac{i}{m\omega}\cdot \qty(-i\hbar) \delta(x'-x'')\dv{x''})\psi(x'') dx'' dx' \\ 
+                               &= \sqrt{\cfrac{m\omega}{2\hbar}}\int_0^\infty \delta(x -x')\qty(x' + \cfrac{\hbar}{m\omega}\dv{x'})\psi(x') dx' \\ 
+                               &= \sqrt{\cfrac{m\omega}{2\hbar}}\qty(x + \cfrac{\hbar}{m\omega}\dv{x})\psi(x) \\ 
+            \end{align*}
+            Hence, we arrive at a first order differential equation in $\psi(x)$.
+            \begin{align*}
+                &\sqrt{\cfrac{m\omega}{2\hbar}}\qty(x + \cfrac{\hbar}{m\omega} \dv{x})\psi = \alpha \psi(x) \\
+                \Rightarrow &\dv{\psi}{x} = \cfrac{m\omega}{\hbar}\qty(\sqrt{\cfrac{2\hbar}{m\omega}}\alpha - x)\psi(x) \\
+                \Rightarrow &\boxed{\dv{\psi}{x} = \qty(\sqrt{\cfrac{2m\omega}{\hbar}}\alpha - \cfrac{m\omega x}{\hbar})\psi(x)} \\
+            \end{align*}
+            Observe that, the following guess solution for $\psi(x)$ works
+            $$\boxed{\psi(x) = C\exp\qty(\sqrt{\cfrac{2m\omega}{\hbar}}~\alpha x - \cfrac{m\omega x^2}{2\hbar})}$$
+            \begin{align*}
+                \dv{\psi}{x} &= C\qty(\sqrt{\cfrac{2m\omega}{\hbar}}~\alpha - \cfrac{m\omega x}{\hbar}) \exp\qty(\sqrt{\cfrac{2m\omega}{\hbar}}~\alpha x - \cfrac{m\omega x^2}{2\hbar}) \\ 
+                             &= \qty(\sqrt{\cfrac{2m\omega}{\hbar}}~\alpha - \cfrac{m\omega x}{\hbar})\psi(x)
+            \end{align*}
+            Now we must ensure that $\psi(x)$ is normalized. Then, we must have, 
+            \begin{align*}
+                &\int_{-\infty}^\infty \psi^*(x)\psi(x)dx = 1 \\ 
+                \Rightarrow &|C|^2 \int_{-\infty}^\infty \exp\qty(\sqrt{\cfrac{2m\omega}{\hbar}}2\Re(\alpha)x - \cfrac{m\omega x^2}{\hbar} )dx  = 1\\ 
+                \Rightarrow &|C|^2 \int_{-\infty}^\infty \exp\qty(-\qty(\sqrt{\cfrac{m\omega}{\hbar}}x - \sqrt 2\Re(\alpha))^2 + 2\Re(\alpha)^2)dx  = 1\\ 
+                \Rightarrow &|C|^2 \exp\qty(2\Re(\alpha)^2) \qty(\cfrac{\hbar}{m\omega})^{\flatfrac{1}{2}} \sqrt\pi = 1 \\
+                \Rightarrow &|C|^2 = \qty(\cfrac{m\omega}{\pi\hbar})^{\flatfrac{1}{2}} \exp\qty(-2\Re(\alpha)^2) \\
+                \Rightarrow &\boxed{C = \qty(\cfrac{m\omega}{\pi\hbar})^{\flatfrac{1}{4}} \exp\qty(i\theta -\Re(\alpha)^2)}
+            \end{align*}
+            Where $\theta \in \rn$ is a constant. Hence, our normaized state is given by, 
+            $$\boxed{\psi(x, t=0) = \qty(\cfrac{m\omega}{\pi\hbar})^{\flatfrac{1}{4}}\exp\qty(i\theta -\Re(\alpha)^2 + \sqrt{\cfrac{2m\omega}{\hbar}}~\alpha x - \cfrac{m\omega x^2}{2\hbar})}$$
     \end{enumerate}
 \end{solution}
 \end{document}
