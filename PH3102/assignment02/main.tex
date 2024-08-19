@@ -51,6 +51,7 @@
 \newcommand*{\Op}{\hat{p}}
 \newcommand*{\Ox}{\hat{x}}
 \newcommand*{\OH}{\hat{H}}
+\newcommand*{\Oa}{\hat{a}}
 \title{PH3102 - Quantum Mechanics}  
 \subtitle{Assignment 2 Solutions}
 \author{Debayan Sarkar \\ \texttt{22MS002}}
@@ -142,7 +143,7 @@ two vectors of the state space.
                 \ev{\Op}{\phi}  &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \ip{\phi}{x'} \mel{x'}{\Op}{x} \ip{x}{\phi} dx'dx \\ 
                                 &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \phi^*(x') \qty(-i\hbar \delta(x - x')\dv{x}) \phi(x) dx'dx \\ 
                                 &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-\flatfrac{ip_0x'}{\hbar}}\psi(x') \qty(-i\hbar \delta(x - x')\dv{x}) e^{\flatfrac{ip_0x}{\hbar}}\psi(x) dx'dx \\ 
-                                &= \int_{-\infty}^{\infty}  e^{-\flatfrac{ip_0}{\hbar}}\psi(x) \qty(-i\hbar \dv{x}) e^{\flatfrac{ip_0}{\hbar}}\psi(x) dx \\ 
+                                &= \int_{-\infty}^{\infty}  e^{-\flatfrac{ip_0x}{\hbar}}\psi(x) \qty(-i\hbar \dv{x}) e^{\flatfrac{ip_0x}{\hbar}}\psi(x) dx \\ 
                                 &= -i\hbar\int_{-\infty}^{\infty}  e^{-\flatfrac{ip_0x}{\hbar}}\psi(x) \dv{x}e^{\flatfrac{ip_0x}{\hbar}}\psi(x) dx \\ 
                                 &= -i\hbar\qty[\int_{-\infty}^{\infty}  e^{-\flatfrac{ip_0x}{\hbar}}\psi(x) e^{\flatfrac{ip_0x}{\hbar}}\dv{\psi(x)}{x} dx + \int_{-\infty}^{\infty}  e^{-\flatfrac{ip_0x}{\hbar}}\psi(x) \cfrac{ip_0}{\hbar}e^{\flatfrac{ip_0x}{\hbar}}\psi(x) dx] \\ 
                                 &= -i\hbar\qty[\int_{-\infty}^{\infty}  \psi(x) \dv{\psi(x)}{x} dx + \cfrac{ip_0}{\hbar}\int_{-\infty}^{\infty} \psi^2(x) dx] \\ 
@@ -173,10 +174,46 @@ two vectors of the state space.
     Note that eigenstates of $\hat{a}$ are referred to as "coherent states".
 \end{exercise}
 \begin{solution}
-    $ $
+    Let us define the kets $\ket{n}$ such that, $$\psi_n(x) = \ip{\Ox}{n}$$ We know that the raising
+    and lowering operators are given by,
+    \begin{align*}
+        \Oa &= \sqrt{\cfrac{m\omega}{2\hbar}}\qty(\Ox + \cfrac{i}{m\omega}\Op) \\
+        \Oa^\dagger &= \sqrt{\cfrac{m\omega}{2\hbar}}\qty(\Ox - \cfrac{i}{m\omega}\Op)
+    \end{align*}
+    And, we know that 
+    \begin{align*}
+        \Oa \ket{n} &= \sqrt{n}\ket{n - 1} \\
+        \Oa^\dagger \ket{n} &= \sqrt{n + 1}\ket{n + 1}
+    \end{align*}
     \begin{enumerate}[label=(\alph*)]
-        \item why am i doing this 
+        \item We are given that $\Oa \ket{\psi} = \alpha \ket{\psi}$. Where $\ip{\Ox}{\psi} = \psi(x, t = 0)$ For that to hold, we must have, 
+            \begin{align*}
+                &\Oa\ket{\psi} = \sum_{n = 0}^{\infty} c_n \Oa \ket{n} \\
+                \Rightarrow &\alpha \ket{\psi} = \sum_{n = 1}^{\infty} c_n \sqrt{n} \ket{n - 1} \\
+                \Rightarrow &\sum_{n = 0}^{\infty} \alpha c_n \ket{n} = \sum_{n = 0}^{\infty} c_{n + 1} \sqrt{n + 1} \ket{n} \\ 
+                \Rightarrow &\alpha c_n = \sqrt{n + 1} c_{n + 1} \\
+                \Rightarrow &c_{n + 1} = \cfrac{\alpha}{\sqrt{n + 1}} c_{n}\\
+                \Rightarrow &c_{n} = \cfrac{\alpha}{\sqrt{n}}c_{n - 1} \\
+                \Rightarrow &c_{n} = \cfrac{\alpha^2}{\sqrt{n(n-1)}} c_{n - 2}\\
+                            &\vdots \\
+                \Rightarrow &\boxed{c_n = \cfrac{\alpha^n}{\sqrt{n!}}c_0}
+            \end{align*}
+            Then our state $\ket{\psi}$ becomes, $$\boxed{\ket{\psi} = c_0 \sum_{n = 0}^{\infty} \cfrac{\alpha^n}{\sqrt{n!}} \ket{n}}$$
+            For $\ket\psi$ to be normalized, we must have,
+            \begin{align*}
+                &\ip{\psi}{\psi} = 1 \\ 
+                \Rightarrow &|c_0|^2 \sum_{n = 0}^{\infty} \sum_{m = 0}^{\infty} \cfrac{(\alpha^*)^n \cdot \alpha^m}{\sqrt{n! \cdot m!}} \ip{n}{m}  = 1\\
+                \Rightarrow &|c_0|^2 \sum_{n = 0}^{\infty} \sum_{m = 0}^{\infty} \cfrac{(\alpha^*)^n \cdot \alpha^m}{\sqrt{n! \cdot m!}} \delta{nm}  = 1\\
+                \Rightarrow &|c_0|^2 \sum_{n = 0}^{\infty} \cfrac{|\alpha|^{2n}}{n!} = 1\\
+                \Rightarrow &|c_0|^2 e^{|\alpha|^2} = 1 \\ 
+                \Rightarrow &|c_0|^2 = e^{-|\alpha|^2} \\
+                \Rightarrow &\boxed{c_0 = \exp\qty(i\phi - \cfrac{|\alpha|^2}{2})}
+            \end{align*}
+            Where $\phi \in \rn$ is a constant. Hence finally our state $\psi$ turns out to be, 
+            $$\boxed{\ket\psi = \exp\qty(i\phi - \cfrac{|\alpha|^2}{2}) \sum_{n = 0}^{\infty} \cfrac{\alpha^n}{\sqrt{n!}}\ket n}$$
+            And in position representation we have,
             $$\boxed{\psi(x, t = 0) = \exp\qty(i\phi - \cfrac{|\alpha|^2}{2}) \sum_{n = 0}^{\infty} \cfrac{\alpha^n}{\sqrt{n!}} ~ \psi_n(x)}$$
+        \item TODO
     \end{enumerate}
 \end{solution}
 \end{document}
