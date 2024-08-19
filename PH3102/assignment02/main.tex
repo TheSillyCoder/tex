@@ -177,7 +177,7 @@ two vectors of the state space.
     Note that eigenstates of $\hat{a}$ are referred to as "coherent states".
 \end{exercise}
 \begin{solution}
-    Let us define the kets $\ket{n}$ such that, $$\psi_n(x) = \ip{\Ox}{n}$$ We know that the raising
+    Let us define the kets $\ket{n}$ such that, $$\psi_n(x) = \ip{x}{n}$$ We know that the raising
     and lowering operators are given by,
     \begin{align*}
         \Oa &= \sqrt{\cfrac{m\omega}{2\hbar}}\qty(\Ox + \cfrac{i}{m\omega}\Op) \\
@@ -189,7 +189,7 @@ two vectors of the state space.
         \Oa^\dagger \ket{n} &= \sqrt{n + 1}\ket{n + 1}
     \end{align*}
     \begin{enumerate}[label=(\alph*)]
-        \item We are given that $\Oa \ket{\psi} = \alpha \ket{\psi}$. Where $\ip{\Ox}{\psi} = \psi(x, t = 0)$ For that to hold, we must have, 
+        \item We are given that $\Oa \ket{\psi} = \alpha \ket{\psi}$. Where $\ip{x}{\psi} = \psi(x, t = 0)$ For that to hold, we must have, 
             \begin{align*}
                 &\Oa\ket{\psi} = \sum_{n = 0}^{\infty} c_n \Oa \ket{n} \\
                 \Rightarrow &\alpha \ket{\psi} = \sum_{n = 1}^{\infty} c_n \sqrt{n} \ket{n - 1} \\
