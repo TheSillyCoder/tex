@@ -143,8 +143,8 @@ two vectors of the state space.
         \item Let $\phi(x) = e^{\flatfrac{ip_0x}{\hbar}}\psi(x)$. Then we have,
             \begin{align*}
                 \ev{\Op}{\phi}  &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \ip{\phi}{x'} \mel{x'}{\Op}{x} \ip{x}{\phi} dx'dx \\ 
-                                &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \phi^*(x') \qty(-i\hbar \delta(x - x')\dv{x}) \phi(x) dx'dx \\ 
-                                &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-\flatfrac{ip_0x'}{\hbar}}\psi(x') \qty(-i\hbar \delta(x - x')\dv{x}) e^{\flatfrac{ip_0x}{\hbar}}\psi(x) dx'dx \\ 
+                                &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \phi^*(x') \qty(-i\hbar \delta(x' - x)\dv{x}) \phi(x) dx'dx \\ 
+                                &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-\flatfrac{ip_0x'}{\hbar}}\psi(x') \qty(-i\hbar \delta(x' - x)\dv{x}) e^{\flatfrac{ip_0x}{\hbar}}\psi(x) dx'dx \\ 
                                 &= \int_{-\infty}^{\infty}  e^{-\flatfrac{ip_0x}{\hbar}}\psi(x) \qty(-i\hbar \dv{x}) e^{\flatfrac{ip_0x}{\hbar}}\psi(x) dx \\ 
                                 &= -i\hbar\int_{-\infty}^{\infty}  e^{-\flatfrac{ip_0x}{\hbar}}\psi(x) \dv{x}e^{\flatfrac{ip_0x}{\hbar}}\psi(x) dx \\ 
                                 &= -i\hbar\qty[\int_{-\infty}^{\infty}  e^{-\flatfrac{ip_0x}{\hbar}}\psi(x) e^{\flatfrac{ip_0x}{\hbar}}\dv{\psi(x)}{x} dx + \int_{-\infty}^{\infty}  e^{-\flatfrac{ip_0x}{\hbar}}\psi(x) \cfrac{ip_0}{\hbar}e^{\flatfrac{ip_0x}{\hbar}}\psi(x) dx] \\ 
@@ -219,10 +219,10 @@ two vectors of the state space.
         \item We are given that, $\Oa \psi = \alpha \psi$. Then in the position representation we have,
             \begin{align*}
                 \alpha \psi(x) &= \mel{x}{\Oa}{\psi}\\ 
-                               &= \int_0^\infty \int_0^\infty \ip{x}{x'}\mel{x'}{\Oa}{x''}\ip{x''}{\psi} dx'' dx' \\ 
-                               &= \sqrt{\cfrac{m\omega}{2\hbar}}\int_0^\infty \int_0^\infty \ip{x}{x'}\mel{x'}{\Ox + \cfrac{i}{m\omega}\Op}{x''}\ip{x''}{\psi} dx'' dx' \\ 
-                               &= \sqrt{\cfrac{m\omega}{2\hbar}}\int_0^\infty \int_0^\infty \delta(x - x')\qty(\delta(x'-x'')x'' + \cfrac{i}{m\omega}\cdot \qty(-i\hbar) \delta(x'-x'')\dv{x''})\psi(x'') dx'' dx' \\ 
-                               &= \sqrt{\cfrac{m\omega}{2\hbar}}\int_0^\infty \delta(x -x')\qty(x' + \cfrac{\hbar}{m\omega}\dv{x'})\psi(x') dx' \\ 
+                               &= \int_{-\infty}^\infty \int_{-\infty}^\infty \ip{x}{x'}\mel{x'}{\Oa}{x''}\ip{x''}{\psi} dx'' dx' \\ 
+                               &= \sqrt{\cfrac{m\omega}{2\hbar}}\int_{-\infty}^\infty \int_{-\infty}^\infty \ip{x}{x'}\mel{x'}{\Ox + \cfrac{i}{m\omega}\Op}{x''}\ip{x''}{\psi} dx'' dx' \\ 
+                               &= \sqrt{\cfrac{m\omega}{2\hbar}}\int_{-\infty}^\infty \int_{-\infty}^\infty \delta(x - x')\qty(\delta(x'-x'')x'' + \cfrac{i}{m\omega}\cdot \qty(-i\hbar) \delta(x'-x'')\dv{x''})\psi(x'') dx'' dx' \\ 
+                               &= \sqrt{\cfrac{m\omega}{2\hbar}}\int_{-\infty}^\infty \delta(x -x')\qty(x' + \cfrac{\hbar}{m\omega}\dv{x'})\psi(x') dx' \\ 
                                &= \sqrt{\cfrac{m\omega}{2\hbar}}\qty(x + \cfrac{\hbar}{m\omega}\dv{x})\psi(x) \\ 
             \end{align*}
             Hence, we arrive at a first order differential equation in $\psi(x)$.
