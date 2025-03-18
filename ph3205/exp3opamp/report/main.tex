@@ -152,18 +152,81 @@ circuit diagram for this configuration is given below.
 
 In this configuration, the output of the OPAMP is given by, 
 $$V_o = -R_f\left(\cfrac{V_1}{R_1} - \cfrac{V_2}{R_2}\right)$$
-
+\pagebreak
 \section{Data and Analysis}
-The data tables fot thi experiment have been provided in the supplementary section.
-\subsection{Analysis}
-huhu
-\section{Conclusion}
-bado badi bado badi
+The data tables for this experiment have been provided in the supplementary section.
+\subsection{Inverting Amplifier}
+The experiment was carried out by varrying the input voltage for fixed values of $R_f$ and $R_i$.
+The data was taken in 5 such configurations. The average gains and the corresponsing standard deviations
+have been tabulated below.
+
+\begin{table}[!h]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+        \textbf{-R\_f/R\_i} & \textbf{A(Theo.)} & \textbf{Average} & \textbf{Std. Dev} \\ \hline
+        -9.8/1 & -9.8 & -9.791919192 & 0.001583593511 \\ \hline
+        -9.8/2.16 & -4.537037037 & -4.548838384 & 0.0005091215182 \\ \hline
+        -21.7/9.8 & -2.214285714 & -2.212244898 & 0.0005997501041 \\ \hline
+        -2.16/1 & -2.16 & -2.1625 & 0.000075 \\ \hline
+        -3.16/1 & -3.16 & -3.175036014 & 0.0001273865128 \\ \hline
+    \end{tabular}
+    \caption{Average Gain and Standard Deviation}
+\end{table}
+\subsection{Non-Inverting Amplifier}
+The experiment was carried out by varrying the input voltage for fixed values of $R_f$ and $R_i$.
+The data was taken in 5 such configurations. The average gains and the corresponsing standard deviations
+have been tabulated below.
+
+\begin{table}[!h]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+        \textbf{1 + R\_f/R\_i} & \textbf{A(Theo.)} & \textbf{Average} & \textbf{Std. Dev.} \\ \hline
+        1+2.16/1 & 3.16 & 3.155 & 0.0005 \\ \hline
+        1+9.08/1 & 10.08 & 10.89469388 & 0.00819092045 \\ \hline
+        1+21.7/9.8 & 3.214285714 & 3.2025 & 0.000475 \\ \hline
+        1+9.8/2.16 & 5.537037037 & 5.526338384 & 0.0009750306091 \\ \hline
+        1+3.16 & 4.16 & 4.206927438 & 0.003361377727 \\ \hline
+    \end{tabular}
+    \caption{Average Gain and Standard Deviation}
+\end{table}
+\clearpage
+\subsection{Voltage Adder}
+A plot of the collected data with a linear fit has been shown below.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{adder_plot.png}
+    \caption{Plot of the Sum of Input Voltages provided and the Measured Output Voltage}
+\end{figure}
+
+The slope of the linear fit was obtained to be $1.025 \pm 0.002$ which is pretty close to our expected
+value of 1.
+\clearpage
+\subsection{Voltage Subtractor}
+A plot of the collected data with a linear fit has been shown below.
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=0.7\linewidth]{subtractor_plot.png}
+    \caption{Plot of the Difference of Input Voltages provided and the Measured Output Voltage}
+\end{figure}
+
+The slope of the linear fit was obtained to be $0.998 \pm 0.006$ which again, is pretty close to our expected
+value of 1.
 \section{Sources Of Error}
 \begin{enumerate}
-    \item Chicken Dak Bungalow
+    \item Thermal fluctuations in the OPAMP might lead to deviations in the output gain of the 
+        amplifier.
+    \item The tolerences of the resistance values of the given resistors also lead to some error 
+        in the measured theoretical gains.
     
 \end{enumerate}
+\section{Conclusion}
+In this experiment we studied the applications of the given OPAMP in various different configurations, and the results agree quite well
+with the theoretical predictions.
+\clearpage
 \section{Supplementary}
 \begin{table}[!ht]
     \centering
